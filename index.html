@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Chores</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- linking google fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Roboto" rel="stylesheet">
 
       <!-- Do not add `link` tags unless you know what you are doing -->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -11,15 +13,104 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
-      <h1>Example</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
-    </body>
+<!-- IMPORTANT: This entire HTML has a bunch of DIVs and SECTIONS with various class names and ID names.
+They just appear and disappear using jQuery show and hide on the single page when needed.
+Any click events or handlers from forms on this page are found in 'addHandlers' methods in events.js -->
+    <body>
+      <div class="container">
+        <div class="header clearfix">
+          <!-- <nav>
+            <ul class="nav nav-tabs">
+              <li class="new-chore-nav"><a href="#">Chores</a></li>
+              <li class="sign-up-nav"><a href="#">Sign Up</a></li>
+              <li class="sign-in-nav"><a href="#">Sign In</a></li>
+              <li class="change-password-nav"><a href="#">Change Password</a></li>
+              <li class="sign-out-nav"><a href="#">Sign Out</a></li>
+            </ul>
+            </ul>
+          </nav> -->
+      </div>
+
+    <div class="main-section">
+
+    <section class="container authentication">
+
+      <form id="sign-up">
+        <fieldset>
+          <legend>Sign up</legend>
+          <input type="email" name="credentials[email]" id="sign-up-email" placeholder="email" required>
+          <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password" required>
+          <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Confirm" required>
+          <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-user"></span> Sign Up</button>
+          <!-- <button type="reset" class="btn btn-secondary">Cancel</button> -->
+      </form>
+
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in</legend>
+          <input type="email" name="credentials[email]" id="sign-in-email" placeholder="email" required>
+          <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password" required>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+          <button type="reset" class="btn btn-secondary">Cancel</button>
+        </fieldset>
+      </form>
+
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign Out</legend>
+          <button type="submit" class="btn btn-primary">Sign Out</button>
+        </fieldset>
+      </form>
+
+    </section>
+
+      <section class="container account-change">
+        <form id="change-password">
+          <fieldset>
+            <legend>Change password</legend>
+            <input type="password" name="passwords[old]" id="old-password" placeholder="Old Password" required>
+            <input type="password" name="passwords[new]" id="new-password" placeholder="New Password" required>
+            <button type="submit" class="btn btn-primary">Change password</button>
+            <button type="reset" class="btn btn-secondary">Cancel</button>
+          </fieldset>
+        </form>
+      </section>
+
+      <!-- This is how the alert boxes change colors from green to red etc..Use class name alert-success.
+      https://www.w3schools.com/bootstrap/bootstrap_alerts.asp -->
+            <!-- <section class="container global-alert">
+        <div id="global-alert-danger" class="alert alert-danger alert-dismissibl" role="alert">
+          <strong>Error!</strong><span id="alert-danger-message"></span>
+        </div>
+
+        <div id="global-alert-success" class="alert alert-success alert-dismissible" role="alert">
+          <strong>Success!</strong><span id="alert-success-message"></span>
+        </div>
+      </section> -->
+
+<P>
+<BR/>
+<BR/>
+</P>
+
+<section class="my-chore-options">
+  <!-- This is the form to add or insert a new chore into the chores table. Not sure how the FK of user gets input here?? -->
+  <form id="add-chore">
+      <legend>Add Chore</legend>
+      <input type="text" name="chore[task]" id="add-chore-desc" placeholder="description" required>
+      <input type="date" name="chore[due_on]" id="add-chore-date" placeholder="date" required>
+      <input type="radio" name="chore[priority]" id="add-chore-radio" value="1"> Urgent
+      <input type="radio" name="chore[priority]" id="add-chore-radio" value="2">  Somewhat Urgent
+      <input type="radio" name="chore[priority]" id="add-chore-radio" value="3">  Not Urgent
+      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-check"></span></button>
+      <button type="reset" class="btn btn-secondary">Cancel</button>
+</form>
+</section>
+
+<section id="get-chores-section">
+<button id="get-chores" class="btn btn-default">Get Chores</button>
+<button id="clear-chores" class="btn btn-default">Clear Chores</button>
+</section>
+</body>
 </html>

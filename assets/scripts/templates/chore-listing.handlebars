@@ -1,0 +1,15 @@
+{{#each chores}}
+  <div class='content'>
+    <div class='row'>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <data-id="{{chore.id}}">
+          <small>Task: {{this.task}}</small>
+          {{#if this.task}}
+            {{this.task}}
+          {{else}}
+            No task.
+          {{/if}}
+    </div>
+  </div>
+</div>
+{{/each}}

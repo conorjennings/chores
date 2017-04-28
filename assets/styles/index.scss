@@ -1,2 +1,10 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+#select-width option{
+  width: 50px;
+}
+
+.answerBottomYesNo input[type="radio"]{
+    margin-left:25px;
+}
