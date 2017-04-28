@@ -3,12 +3,29 @@
     <div class='row'>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <data-id="{{chore.id}}">
-          <small>Task: {{this.task}}</small>
+          <small>Task: </small>
           {{#if this.task}}
             {{this.task}}
           {{else}}
             No task.
           {{/if}}
+
+          <BR/>
+          <small>Due Date: </small>
+          {{#if this.due_on}}
+            {{this.due_on}}
+          {{else}}
+            No Due Date
+          {{/if}}
+
+          <BR/>
+          <small>Priority: </small>
+          {{#if this.priority}}
+            {{this.priority}}
+          {{else}}
+            No Priority
+          {{/if}}
+
     </div>
   </div>
 </div>

@@ -18,7 +18,10 @@ const createChore = (data) => {
 const getChores = function () {
   return $.ajax({
     url: app.host + '/chores', // "http://book-json.herokuapp.com/books"
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
