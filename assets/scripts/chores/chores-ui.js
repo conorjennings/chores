@@ -30,9 +30,24 @@ const getChoresFailure = (error) => {
   console.error(error)
 }
 
+const updateChoreSuccess = (data) => {
+  console.log('Add Chore Success: ', data)
+}
+
+const updateChoreFailure = (error) => {
+  console.log('Update Chore Failed: ', error)
+}
+
+const clearChores = () => {
+  $('#chore-content').empty()
+}
+
 module.exports = {
   createChoreSuccess,
   createChoreFailure,
   getChoresSuccess,
-  getChoresFailure
+  getChoresFailure,
+  clearChores,
+  updateChoreSuccess,
+  updateChoreFailure
 }

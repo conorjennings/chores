@@ -113,8 +113,23 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
 <button id="clear-chores" class="btn btn-default">Clear Chores</button>
 
 <div  id ="chore-content">
-
 </div>
+
 </section>
+
+
+<form id="update-chore">
+  <fieldset>
+    <legend>update chore</legend>
+    <input type="text" name="chore[id]" placeholder="id">
+    <input type="text" name="chore[task]" placeholder="description">
+    <input type="date" name="chore[due_on]" placeholder="date">
+    <input type="radio" name="chore[priority]" id="add-chore-radio" value="1"> Urgent
+    <input type="radio" name="chore[priority]" id="add-chore-radio" value="2">  Somewhat Urgent
+    <input type="radio" name="chore[priority]" id="add-chore-radio" value="3">  Not Urgent
+    <input type="submit" name="submit" value="update chore">
+  </fieldset>
+</form>
+
 </body>
 </html>
