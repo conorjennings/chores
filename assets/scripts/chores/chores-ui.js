@@ -38,6 +38,14 @@ const updateChoreFailure = (error) => {
   console.log('Update Chore Failed: ', error)
 }
 
+const deleteChoreSuccess = (data) => {
+  console.log('Delete Chore Success: ', data)
+}
+
+const deleteChoreFailure = (error) => {
+  console.log('Delete Chore Failed: ', error)
+}
+
 const clearChores = () => {
   $('#chore-content').empty()
 }
@@ -49,5 +57,7 @@ module.exports = {
   getChoresFailure,
   clearChores,
   updateChoreSuccess,
-  updateChoreFailure
+  updateChoreFailure,
+  deleteChoreSuccess,
+  deleteChoreFailure
 }

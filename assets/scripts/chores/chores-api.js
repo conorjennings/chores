@@ -36,9 +36,21 @@ const updateChore = (data) => {
   })
 }
 
+const deleteChore = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/chores/' + data.chore.id,
+    method: 'DELETE',
+    data: data,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 // Exported since used in other code like events.js
 module.exports = {
   createChore,
   getChores,
-  updateChore
+  updateChore,
+  deleteChore
 }
