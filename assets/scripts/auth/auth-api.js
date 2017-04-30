@@ -19,6 +19,16 @@ const signIn = (data) => {
   })
 }
 
+// const signOut = () => {
+//   return $.ajax({
+//     url: config.apiOrigin + '/sign-out/' + store.user.id,
+//     method: 'DELETE',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
+
 const signOut = () => {
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + store.user.id,

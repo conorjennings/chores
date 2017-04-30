@@ -45,17 +45,21 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
           <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-user"></span> Sign Up</button>
           <!-- <button type="reset" class="btn btn-secondary">Cancel</button> -->
       </form>
-
+      <P>
+      <BR/>
+      </P>
       <form id="sign-in">
         <fieldset>
           <legend>Sign in</legend>
-          <input type="email" name="credentials[email]" id="sign-in-email" placeholder="email" required>
-          <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password" required>
+          <input type="email" name="credentials[email]" id="sign-in-email" placeholder="email" value="cj@gmail.com" required>
+          <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password" value="a" required>
           <button type="submit" class="btn btn-primary">Sign In</button>
           <button type="reset" class="btn btn-secondary">Cancel</button>
         </fieldset>
       </form>
-
+      <P>
+      <BR/>
+      </P>
       <form id="sign-out">
         <fieldset>
           <legend>Sign Out</legend>
@@ -64,7 +68,9 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
       </form>
 
     </section>
-
+    <P>
+    <BR/>
+    </P>
       <section class="container account-change">
         <form id="change-password">
           <fieldset>
@@ -79,22 +85,29 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
 
       <!-- This is how the alert boxes change colors from green to red etc..Use class name alert-success.
       https://www.w3schools.com/bootstrap/bootstrap_alerts.asp -->
-            <!-- <section class="container global-alert">
-        <div id="global-alert-danger" class="alert alert-danger alert-dismissibl" role="alert">
+            <section class="container global-alert">
+        <div id="global-alert-danger" class="alert alert-danger alert-dismissible" role="alert">
           <strong>Error!</strong><span id="alert-danger-message"></span>
         </div>
 
         <div id="global-alert-success" class="alert alert-success alert-dismissible" role="alert">
           <strong>Success!</strong><span id="alert-success-message"></span>
         </div>
-      </section> -->
+      </section>
 
 <P>
 <BR/>
 <BR/>
 </P>
 
-<section class="my-chore-options">
+<!-- <section id="get-chores-section"> -->
+<button id="get-chores" class="btn btn-primary">Get Chores</button>
+<!-- <button id="clear-chores" class="btn btn-default">Clear Chores</button> -->
+<!-- </section> -->
+<P>
+<BR/>
+</P>
+<!-- <section class="my-chore-options"> -->
   <!-- This is the form to add or insert a new chore into the chores table. Not sure how the FK of user gets input here?? -->
   <form id="add-chore">
       <legend>Add Chore</legend>
@@ -103,19 +116,12 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
       <input type="radio" name="chore[priority]" id="add-chore-radio" value="1"> Urgent
       <input type="radio" name="chore[priority]" id="add-chore-radio" value="2">  Somewhat Urgent
       <input type="radio" name="chore[priority]" id="add-chore-radio" value="3">  Not Urgent
-      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-check"></span></button>
+      <!-- <button type="submit" class="btn btn-primary"> Add Chore</button> -->
+      <input type="submit" class="btn btn-primary" name="submit" value="Add Chore">
       <button type="reset" class="btn btn-secondary">Cancel</button>
 </form>
-</section>
+<!-- </section> -->
 
-<section id="get-chores-section">
-<button id="get-chores" class="btn btn-default">Get Chores</button>
-<button id="clear-chores" class="btn btn-default">Clear Chores</button>
-
-<div  id ="chore-content">
-</div>
-
-</section>
 <P>
 <BR/>
 <BR/>
@@ -130,7 +136,8 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
     <input type="radio" name="chore[priority]" id="add-chore-radio" value="1"> Urgent
     <input type="radio" name="chore[priority]" id="add-chore-radio" value="2">  Somewhat Urgent
     <input type="radio" name="chore[priority]" id="add-chore-radio" value="3">  Not Urgent
-    <input type="submit" name="submit" value="update chore">
+    <input type="submit" class="btn btn-primary" name="submit" value="update chore">
+      <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
 </form>
 <P>
@@ -141,9 +148,37 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
   <fieldset>
     <legend>delete chore</legend>
     <input type="text" name="chore[id]" placeholder="id">
-    <input type="submit" name="submit" value="delete chore">
+    <input type="submit" class="btn btn-primary" name="submit" value="delete chore">
+      <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
 </form>
 
+<P>
+<BR/>
+<BR/>
+</P>
+<form id="get-one-chore">
+  <fieldset>
+    <legend>Select One Chore</legend>
+    <input type="text" name="chore[id]" placeholder="id">
+    <input type="submit" class="btn btn-primary" name="submit" value="get a chore">
+      <button type="reset" class="btn btn-secondary">Cancel</button>
+  </fieldset>
+</form>
+
+<P>
+<BR/>
+<BR/>
+</P>
+ <div class="list-group-item" id ="one-chore-content">
+</div>
+
+
+<P>
+<BR/>
+<BR/>
+</P>
+<div class="list-group-item" id ="chore-content">
+</div>
 </body>
 </html>

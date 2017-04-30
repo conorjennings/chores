@@ -37,12 +37,12 @@ const signInFailure = (error) => {
 }
 
 const signOutSuccess = () => {
+  console.log('>>>>>>>>>>>>> sign out success')
   store.user = null // this gets rid of data stored in cache
-  console.log('sign out success')
-  $('#sign-up-modal').show()
-  $('#sign-in-modal').show()
-  $('#change-password-modal').hide()
-  $('#sign-out-modal').hide()
+  // $('#sign-up-modal').show()
+  // $('#sign-in-modal').show()
+  // $('#change-password-modal').hide()
+  // $('#sign-out-modal').hide()
 }
 
 const signOutFailure = (error) => {

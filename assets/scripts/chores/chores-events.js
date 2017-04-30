@@ -21,6 +21,16 @@ const onGetChores = (event) => {
     .catch(ui.failure)
 }
 
+const onGetOneChore = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.getOneChore(data)
+  .then(function (data) {
+    ui.getOneChoreSuccess(data)
+  })
+  .catch(ui.getOneChoreFailure)
+}
+
 const onUpdateChore = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
@@ -34,7 +44,6 @@ const onUpdateChore = function (event) {
 const onDeleteChore = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log('>>>>> onDeleteChore: data is', data)
   api.deleteChore(data)
   .then(function (data) {
     ui.deleteChoreSuccess(data)
@@ -50,6 +59,7 @@ const onClearChores = (event) => {
 const addHandlers = () => {
   $('#add-chore').on('submit', onCreateChore)
   $('#get-chores').on('click', onGetChores)
+  $('#get-one-chore').on('submit', onGetOneChore)
   $('#clear-chores').on('click', onClearChores)
   $('#update-chore').on('submit', onUpdateChore)
   $('#delete-chore').on('submit', onDeleteChore)

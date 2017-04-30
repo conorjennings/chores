@@ -1,10 +1,11 @@
 'use strict'
 
-const store = require('../store')
+// const store = require('../store')
 const showChoresTemplate = require('../templates/chore-listing.handlebars')
+
 const createChoreSuccess = (data) => {
-  store.user = data.user
-  console.log('Add Chore Success: ', data)
+  console.log('>>>>>Add Chore Success: ', data)
+  // store.user = data.user  // Closed to my issue log https://github.com/ga-wdi-boston/full-stack-project/issues/772
 }
 
 const createChoreFailure = (error) => {
@@ -14,20 +15,12 @@ const createChoreFailure = (error) => {
 }
 
 const getChoresSuccess = (data) => {
-  console.log(data)
   const showChoresHtml = showChoresTemplate({ chores: data.chores })
-
   $('#chore-content').html(showChoresHtml)
-
-  $('button').on('click', function (e) {
-    e.preventDefault()
-    $(e.target).parent().parent().remove()
-  })
 }
 
 const getChoresFailure = (error) => {
   console.log('Get Chores Failed: ', error)
-  console.error(error)
 }
 
 const updateChoreSuccess = (data) => {
@@ -50,6 +43,25 @@ const clearChores = () => {
   $('#chore-content').empty()
 }
 
+const getOneChoreSuccess = (data) => {
+  $('#one-chore-content').html('<ol>')
+  $('#one-chore-content').append('<li>' + data.chore.id + '</li>')
+  $('#one-chore-content').append('<li>' + data.chore.task + '</li>')
+  $('#one-chore-content').append('<li>' + data.chore.due_on + '</li>')
+  $('#one-chore-content').append('<li>' + data.chore.priority + '</li>')
+  $('#one-chore-content').append('</ol>')
+
+  // This code was clearing out screen when i hit 'Get Chores' button twice. Turned it off..
+  $('button').on('click', function (e) {
+    e.preventDefault()
+    $(e.target).parent().parent().remove()
+  })
+}
+
+const getOneChoreFailure = (error) => {
+  console.log('Get 1 Chore Failed: ', error)
+}
+
 module.exports = {
   createChoreSuccess,
   createChoreFailure,
@@ -59,5 +71,7 @@ module.exports = {
   updateChoreSuccess,
   updateChoreFailure,
   deleteChoreSuccess,
-  deleteChoreFailure
+  deleteChoreFailure,
+  getOneChoreSuccess,
+  getOneChoreFailure
 }
