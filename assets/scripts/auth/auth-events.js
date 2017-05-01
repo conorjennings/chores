@@ -59,6 +59,7 @@ const onChangePassword = function (event) {
 const onClearErrorAlertBox = function () {
   // event.preventDefault()  This cost me 2 annoying hours. Wouldn't allow me clear form as well as hide error message. Turned off. then worked!
   $('.alert').hide()
+  $('.alert-danger').hide()
 }
 
 // Genereic function to clear out input form fields when necessary
@@ -83,6 +84,10 @@ const showObjects = function (sectionName) {
   $(sectionName).show()
 }
 
+const hideObjects = function (sectionName) {
+  $(sectionName).hide()
+}
+
 const addHandlers = () => {
   $('.change-password-menu').on('click', changePasswordShowHideObjects)
   $('#change-password').on('submit', onChangePassword)
@@ -91,7 +96,8 @@ const addHandlers = () => {
   $('#sign-up').on('reset', onClearFormInput('#sign-up'), onClearErrorAlertBox)
   $('.sign-in-menu').on('click', function () { showObjects('.sign-in-section') })
   $('#sign-in').on('submit', onSignIn)
-  $('#sign-in').on('reset', onClearFormInput('#sign-in'), onClearErrorAlertBox)
+  // Hitting cancel on sign in button invokes 3 handler methods to clear contents of text and password box, clear out any error alerts and then hide the entire sign in form
+  $('#sign-in').on('reset', onClearFormInput('#sign-in'), function () { hideObjects('.sign-in-section') })
   $('#sign-out').on('submit', onSignOut)
 }
 

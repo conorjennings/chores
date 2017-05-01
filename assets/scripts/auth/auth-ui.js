@@ -9,6 +9,7 @@ const signUpSuccess = (data) => {
 
 const signUpFailure = (error) => {
   $('#signUpErrorAlertMessage').html("Passwords don't match or email already taken")
+  $('.alert-danger').show()
   console.error(error)
 }
 
@@ -17,7 +18,7 @@ const signUpFailure = (error) => {
 const signInSuccess = (data) => {
   // just save whatever you goet back during a sign in in this store object that will hold the token.
   store.user = data.user
-  // console.log('Token info: ', store.user.token)
+  console.log('Token info: ', store.user.token)
   $('.sign-up-menu').hide()
   $('.chore-menu').show()
   $('.change-password-menu').show()
@@ -25,7 +26,8 @@ const signInSuccess = (data) => {
 
 const signInFailure = (error) => {
   console.log('sign in failure')
-  $('#signInErrorAlertMessage').html('Incorrect Email or Password.')
+  $('#sign-in-error-message').html('Incorrect Email or Password.')
+  $('.alert-danger').show()
   console.error('sign in failure. Error is: ', error)
 }
 
