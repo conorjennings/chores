@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Chores</title>
+      <title>To Do or Not To Do</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- linking google fonts -->
       <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Roboto" rel="stylesheet">
@@ -20,34 +20,38 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
     <body>
       <div class="container">
         <div class="header clearfix">
-          <!-- <nav>
+          <nav>
             <ul class="nav nav-tabs">
-              <li class="new-chore-nav"><a href="#">Chores</a></li>
-              <li class="sign-up-nav"><a href="#">Sign Up</a></li>
-              <li class="sign-in-nav"><a href="#">Sign In</a></li>
-              <li class="change-password-nav"><a href="#">Change Password</a></li>
-              <li class="sign-out-nav"><a href="#">Sign Out</a></li>
+              <li class="chore-menu"><a href="#">Chores</a></li>
+              <li class="sign-up-menu"><a href="#">Sign Up</a></li>
+              <li class="sign-in-menu"><a href="#">Sign In</a></li>
+              <li class="change-password-menu"><a href="#">Change Password</a></li>
+              <li class="sign-out-menu"><a href="#">Sign Out</a></li>
             </ul>
-            </ul>
-          </nav> -->
+          </nav>
       </div>
 
-    <div class="main-section">
-
     <section class="container authentication">
-
+<!--
+      <div class="jumbotron">
+          <h1>Chores, Chores, Chores.. </h1>
+        </div> -->
+<div class="sign-up-section">
       <form id="sign-up">
-        <fieldset>
           <legend>Sign up</legend>
           <input type="email" name="credentials[email]" id="sign-up-email" placeholder="email" required>
           <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password" required>
           <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Confirm" required>
-          <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-user"></span> Sign Up</button>
-          <!-- <button type="reset" class="btn btn-secondary">Cancel</button> -->
+          <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Sign Up</button>
+          <button type="reset" class="btn btn-secondary">Cancel</button>
+          <div id="sign-up-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
+          <div id="sign-up-success-message" class="alert alert-success" role="alert"></div>
       </form>
+</div>
       <P>
       <BR/>
       </P>
+      <div class="sign-in-section">
       <form id="sign-in">
         <fieldset>
           <legend>Sign in</legend>
@@ -55,51 +59,46 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
           <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password" value="a" required>
           <button type="submit" class="btn btn-primary">Sign In</button>
           <button type="reset" class="btn btn-secondary">Cancel</button>
+          <div id="sign-in-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
+          <div id="sign-in-success-message" class="alert alert-success" role="alert"></div>
         </fieldset>
       </form>
-      <P>
-      <BR/>
-      </P>
-      <form id="sign-out">
+    </div>
+
+
+      <!-- <form id="sign-out">
         <fieldset>
           <legend>Sign Out</legend>
           <button type="submit" class="btn btn-primary">Sign Out</button>
         </fieldset>
-      </form>
+      </form> -->
 
     </section>
     <P>
     <BR/>
     </P>
+    <div class="change-password-section">
       <section class="container account-change">
         <form id="change-password">
           <fieldset>
             <legend>Change password</legend>
-            <input type="password" name="passwords[old]" id="old-password" placeholder="Old Password" required>
+            <input type="password" name="passwords[old]" id="old-password" placeholder="Current Password" required>
             <input type="password" name="passwords[new]" id="new-password" placeholder="New Password" required>
+            <input type="password" name="passwords[confirm]" id="new-password-confirm" placeholder="Confirm Password" required>
             <button type="submit" class="btn btn-primary">Change password</button>
             <button type="reset" class="btn btn-secondary">Cancel</button>
           </fieldset>
         </form>
+      <div id="change-password-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
+      <div id="change-password-success-message" class="alert alert-success" role="alert"></div>
       </section>
-
-      <!-- This is how the alert boxes change colors from green to red etc..Use class name alert-success.
-      https://www.w3schools.com/bootstrap/bootstrap_alerts.asp -->
-            <section class="container global-alert">
-        <div id="global-alert-danger" class="alert alert-danger alert-dismissible" role="alert">
-          <strong>Error!</strong><span id="alert-danger-message"></span>
-        </div>
-
-        <div id="global-alert-success" class="alert alert-success alert-dismissible" role="alert">
-          <strong>Success!</strong><span id="alert-success-message"></span>
-        </div>
-      </section>
-
+    </div>
 <P>
 <BR/>
 <BR/>
 </P>
 
+<div class="chores-section">
 <!-- <section id="get-chores-section"> -->
 <button id="get-chores" class="btn btn-primary">Get Chores</button>
 <!-- <button id="clear-chores" class="btn btn-default">Clear Chores</button> -->
@@ -111,14 +110,24 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
   <!-- This is the form to add or insert a new chore into the chores table. Not sure how the FK of user gets input here?? -->
   <form id="add-chore">
       <legend>Add Chore</legend>
+
       <input type="text" name="chore[task]" id="add-chore-desc" placeholder="description" required>
       <input type="date" name="chore[due_on]" id="add-chore-date" placeholder="date" required>
-      <input type="radio" name="chore[priority]" id="add-chore-radio" value="1"> Urgent
-      <input type="radio" name="chore[priority]" id="add-chore-radio" value="2">  Somewhat Urgent
-      <input type="radio" name="chore[priority]" id="add-chore-radio" value="3">  Not Urgent
+      <!-- <input type="radio" name="chore[priority]" value="1"> Urgent
+      <input type="radio" name="chore[priority]" value="2">  Somewhat Urgent
+      <input type="radio" name="chore[priority]" value="3">  Not Urgent -->
+      <select name="chore[priority]" required>
+      <option disabled selected value> Priority Level </option>
+      <option name="chore[priority]" value="1">Urgent</option>
+      <option name="chore[priority]" value="2">Somewhat Urgent</option>
+      <option name="chore[priority]" value="3">Not Urgent</option>
+      </select>
       <!-- <button type="submit" class="btn btn-primary"> Add Chore</button> -->
       <input type="submit" class="btn btn-primary" name="submit" value="Add Chore">
       <button type="reset" class="btn btn-secondary">Cancel</button>
+      <div id="add-chore-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
+      <div id="add-chore-success-message" class="alert alert-success" role="alert"></div>
+
 </form>
 <!-- </section> -->
 
@@ -130,12 +139,12 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
 <form id="update-chore">
   <fieldset>
     <legend>update chore</legend>
-    <input type="text" name="chore[id]" placeholder="id">
-    <input type="text" name="chore[task]" placeholder="description">
-    <input type="date" name="chore[due_on]" placeholder="date">
-    <input type="radio" name="chore[priority]" id="add-chore-radio" value="1"> Urgent
-    <input type="radio" name="chore[priority]" id="add-chore-radio" value="2">  Somewhat Urgent
-    <input type="radio" name="chore[priority]" id="add-chore-radio" value="3">  Not Urgent
+    <input type="text" name="chore[id]" placeholder="id" required>
+    <input type="text" name="chore[task]" placeholder="description" required>
+    <input type="date" name="chore[due_on]" placeholder="date" required>
+    <input type="radio" name="chore[priority]" value="1"> Urgent
+    <input type="radio" name="chore[priority]" value="2">  Somewhat Urgent
+    <input type="radio" name="chore[priority]" value="3">  Not Urgent
     <input type="submit" class="btn btn-primary" name="submit" value="update chore">
       <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
@@ -147,7 +156,7 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
 <form id="delete-chore">
   <fieldset>
     <legend>delete chore</legend>
-    <input type="text" name="chore[id]" placeholder="id">
+    <input type="text" name="chore[id]" placeholder="id" required>
     <input type="submit" class="btn btn-primary" name="submit" value="delete chore">
       <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
@@ -155,22 +164,86 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
 
 <P>
 <BR/>
+<!-- Drop down menu to return selected items -->
+<!-- <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Get Specific Chores
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">By Priority</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">By Days Remaining</a>
+  </div>
+</div> -->
+
+
+<!-- Drop down menu to return selected items
+http://bootsnipp.com/snippets/9naj
+ -->
+<!-- <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Filter Chores <span class="caret"></span>
+    </button>
+<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+      <li><a href="#">By Days Remaining</a></li>
+      <li class="divider"></li>
+      <li class="dropdown-submenu">
+        <a tabindex="-1" href="#">By Priority</a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="#" name="chore[priority]" value="1">Urgent</a></li>
+          <li><a href="#" name="chore[priority]" value="2">Somewhat Urgent</a></li>
+          <li><a href="#" name="chore[priority]" value="3">Not Urgent</a></li>
+        </ul>
+      </li>
+    </ul>
+</div> -->
+
+<div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Filter Chores <span class="caret"></span>
+    </button>
+
+<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+      <li><a href="#">By Days Remaining</a></li>
+      <li class="divider"></li>
+      <li class="dropdown-submenu">
+        <a tabindex="-1" href="#">By Priority</a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="#" name="chore[priority]" value="1">Urgent</a></li>
+          <li><a href="#" name="chore[priority]" value="2">Somewhat Urgent</a></li>
+          <li><a href="#" name="chore[priority]" value="3">Not Urgent</a></li>
+        </ul>
+      </li>
+    </ul>
+      <!-- <form id="get-chores-by-priority">
+        <select name="chore[priority]">
+        <option name="chore[priority]" value="1">Urgent</option>
+        <option name="chore[priority]" value="2">Somewhat Urgent</option>
+        <option name="chore[priority]" value="3">Not Urgent</option>
+        </select>
+      </form> -->
+
+</div>
 <BR/>
+
+
+
 </P>
 <form id="get-one-chore">
   <fieldset>
     <legend>Select One Chore</legend>
-    <input type="text" name="chore[id]" placeholder="id">
+    <input type="text" name="chore[id]" placeholder="id" required>
     <input type="submit" class="btn btn-primary" name="submit" value="get a chore">
       <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
 </form>
 
+
 <P>
 <BR/>
 <BR/>
 </P>
- <div class="list-group-item" id ="one-chore-content">
+ <div class="list-group" id ="one-chore-content">
 </div>
 
 
@@ -178,7 +251,10 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
 <BR/>
 <BR/>
 </P>
-<div class="list-group-item" id ="chore-content">
-</div>
+<div class="list-group" id ="chore-content"></div>
+
+</div> <!-- End of chores section DIV -->
+
+
 </body>
 </html>

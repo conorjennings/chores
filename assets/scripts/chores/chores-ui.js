@@ -44,18 +44,17 @@ const clearChores = () => {
 }
 
 const getOneChoreSuccess = (data) => {
-  $('#one-chore-content').html('<ol>')
-  $('#one-chore-content').append('<li>' + data.chore.id + '</li>')
-  $('#one-chore-content').append('<li>' + data.chore.task + '</li>')
-  $('#one-chore-content').append('<li>' + data.chore.due_on + '</li>')
-  $('#one-chore-content').append('<li>' + data.chore.priority + '</li>')
-  $('#one-chore-content').append('</ol>')
+  $('#one-chore-content').html('<h1><small>Chore Details:<br></small></h1>')
+  $('#one-chore-content').append('<h3><small>ID: ' + data.chore.id + '</small></h3>')
+  $('#one-chore-content').append('<h3><small>Description: ' + data.chore.task + '</small></h3>')
+  $('#one-chore-content').append('<h3><small>Due Date: ' + data.chore.due_on + '</small></h3>')
+  $('#one-chore-content').append('<h3><small>Priority Level: ' + data.chore.priority + '</small></h3>')
 
   // This code was clearing out screen when i hit 'Get Chores' button twice. Turned it off..
-  $('button').on('click', function (e) {
-    e.preventDefault()
-    $(e.target).parent().parent().remove()
-  })
+  // $('button').on('click', function (e) {
+  //   e.preventDefault()
+  //   $(e.target).parent().parent().remove()
+  // })
 }
 
 const getOneChoreFailure = (error) => {

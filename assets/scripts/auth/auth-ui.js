@@ -5,7 +5,6 @@ const store = require('../store')
 const signUpSuccess = (data) => {
   store.user = data.user
   console.log('sign up success')
-  $('#sign-up-modal').hide()
 }
 
 const signUpFailure = (error) => {
@@ -18,16 +17,10 @@ const signUpFailure = (error) => {
 const signInSuccess = (data) => {
   // just save whatever you goet back during a sign in in this store object that will hold the token.
   store.user = data.user
-  console.log('>>>>>>>>>>>>>>>>>>>>>>> sign in success')
-  console.log('Token info: ', store.user.token)
-  // $('#sign-up-modal').hide()
-  // $('#sign-in-modal').hide()
-  // $('#change-password-modal').show()
-  // $('#sign-out-modal').show()
-  // $('#start-game-modal').show()
-  // $('#tic-tac-game-board').show()
-  // $('#game-reset-modal').hide()
-  // $('#game-stats-modal').hide()
+  // console.log('Token info: ', store.user.token)
+  $('.sign-up-menu').hide()
+  $('.chore-menu').show()
+  $('.change-password-menu').show()
 }
 
 const signInFailure = (error) => {
@@ -39,10 +32,9 @@ const signInFailure = (error) => {
 const signOutSuccess = () => {
   console.log('>>>>>>>>>>>>> sign out success')
   store.user = null // this gets rid of data stored in cache
-  // $('#sign-up-modal').show()
-  // $('#sign-in-modal').show()
-  // $('#change-password-modal').hide()
-  // $('#sign-out-modal').hide()
+  $('.sign-up-menu').show()
+  $('.chore-menu').hide()
+  $('.change-password-menu').hide()
 }
 
 const signOutFailure = (error) => {
@@ -50,8 +42,8 @@ const signOutFailure = (error) => {
 }
 
 const changePasswordSuccess = () => {
-  console.log('change password success')
-  $('#change-password-modal').hide()
+  $('#change-password-success-message').html('Password changed')
+  $('.alert-success').show()
 }
 
 const changePasswordFailure = (error) => {

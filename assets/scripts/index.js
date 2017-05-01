@@ -7,6 +7,13 @@ const choreEvents = require('./chores/chores-events.js')
 
 $(() => {
   setAPIOrigin(location, config)
+  $('.alert').hide()
+  $('.change-password-menu').hide()
+  $('.chore-menu').hide()
+  $('.sign-up-section').hide()
+  $('.sign-in-section').hide()
+  $('.change-password-section').hide()
+  $('.chores-section').hide()
 })
 
 // use require with a reference to bundle the file and use it in this file

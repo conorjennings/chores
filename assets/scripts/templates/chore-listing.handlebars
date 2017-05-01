@@ -27,14 +27,32 @@
           {{/if}}
 
           <BR/>
+          <small>Number of Days Remaining: </small>
+          {{#if this.days_to_due_date}}
+            {{this.days_to_due_date}}
+          {{else}}
+            0
+          {{/if}}
+<!--
+          <BR/>
           <small>Priority: </small>
           {{#if this.priority}}
             {{this.priority}}
           {{else}}
             No Priority
+          {{/if}} -->
+
+          <BR/>
+          <small>Priority: </small>
+          {{#if this.priority_alpha}}
+            {{this.priority_alpha}}
+          {{else}}
+            No Priority
           {{/if}}
           <P>
+            <BR />
           </P>
+
     </div>
   </div>
 </div>

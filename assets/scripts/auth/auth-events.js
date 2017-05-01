@@ -8,17 +8,17 @@ let origPass // Had to init this global for some reason?
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  api.signUp(data)
-  .then(function (data) {
-    ui.signUpSuccess(data)
-    // $('#modalRegister').modal('hide')
-  })
-  .catch(ui.signUpFailure)
-  // Clear out existing text in modal text boxes when there is a failure
-  // source: http://stackoverflow.com/questions/31022950/how-clear-bootstrap-modal-on-hide
-  $('#modalRegister').on('hidden.bs.modal', function () {
-    $(this).find('input,textarea,select').val('').end()
-  })
+  if (data.credentials.password !== data.credentials.password_confirmation) {
+    $('#sign-up-error-message').html('Passwords do not match. Please try again')
+    $('.alert-danger').show()
+  } else {
+    api.signUp(data)
+    .then(function (data) {
+      ui.signUpSuccess(data)
+      $('#sign-up')[0].reset() // clear out form after successfully signing up
+    })
+    .catch(ui.signUpFailure)
+  }
 }
 
 const onSignIn = function (event) {
@@ -28,27 +28,12 @@ const onSignIn = function (event) {
   api.signIn(data)
   .then(function (data) {
     ui.signInSuccess(data)
-    $('#modalSignIn').modal('hide')
+    $('#sign-in')[0].reset() // clear out form after successfully signing in
   })
   .catch(ui.signInFailure)
-  // Clear out existing text in modal text boxes when there is a failure
-  // source: http://stackoverflow.com/questions/31022950/how-clear-bootstrap-modal-on-hide
-  $('#modalSignIn').on('hidden.bs.modal', function () {
-    $(this).find('input,textarea,select').val('').end()
-  })
 }
 
-// const onSignOut = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   api.signOut(data)
-//   .then(ui.signOutSuccess)
-//   .catch(ui.signOutFailure)
-//   $('#modalSignOut').modal('hide')
-// }
-
 const onSignOut = function (event) {
-  console.log (">> onSignOut with event  = ", event)
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
@@ -58,33 +43,55 @@ const onSignOut = function (event) {
 const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  // if (origPass !== data.passwords.old || data.passwords.confirm !== data.passwords.new) {
-  //   $('#changePasswordErrorAlertMessage').html('Incorrect Password Change')
-  //   ui.changePasswordFailure
-  //   // Clear out existing text in modal text boxes
-  //   // source: http://stackoverflow.com/questions/31022950/how-clear-bootstrap-modal-on-hide
-  //   $('#modalChangePassword').on('hidden.bs.modal', function () {
-  //     $(this).find('input,textarea,select').val('').end()
-  //   })
-  //   return
-  // }
 
-  api.changePassword(data)
-  .then(ui.changePasswordSuccess)
-  .catch(ui.changePasswordFailure)
-  $('#modalChangePassword').modal('hide')
-  // Clear out existing text in modal text boxes
-  // source: http://stackoverflow.com/questions/31022950/how-clear-bootstrap-modal-on-hide
-  $('#modalChangePassword').on('hidden.bs.modal', function () {
-    $(this).find('input,textarea,select').val('').end()
-  })
+  if (origPass !== data.passwords.old || data.passwords.new !== data.passwords.confirm) {
+    $('#change-password-error-message').html('Either your current password was typed incorrectly or your new passwords do not match. Please try again')
+    $('.alert-danger').show()
+  } else {
+    api.changePassword(data)
+      .then(ui.changePasswordSuccess)
+      .catch(ui.changePasswordFailure)
+    $('#change-password')[0].reset() // clear out form after successfully changing password
+  }
 }
 
-// instead of having long list of handlers, we have this function do them all here
+// Hide any error bootstrap alert box if user hits cancel.
+const onClearErrorAlertBox = function () {
+  // event.preventDefault()  This cost me 2 annoying hours. Wouldn't allow me clear form as well as hide error message. Turned off. then worked!
+  $('.alert').hide()
+}
+
+// Genereic function to clear out input form fields when necessary
+const onClearFormInput = function (formName) {
+  $(formName)[0].reset()
+}
+
+const changePasswordShowHideObjects = function () {
+  $('.nav').show()
+  $('.alert').hide()
+  $('.authentication').hide()
+}
+
+// const showObjects = function () {
+//   const xyz = $('.sign-in-section')
+//   xyz.show()
+//   // $('.sign-in-section').show()
+// }
+
+// DRY: Pass in any class or DIV name to this function to show it one the page:
+const showObjects = function (sectionName) {
+  $(sectionName).show()
+}
+
 const addHandlers = () => {
+  $('.change-password-menu').on('click', changePasswordShowHideObjects)
   $('#change-password').on('submit', onChangePassword)
+  $('#change-password').on('reset', onClearFormInput('#change-password'), onClearErrorAlertBox)
   $('#sign-up').on('submit', onSignUp)
+  $('#sign-up').on('reset', onClearFormInput('#sign-up'), onClearErrorAlertBox)
+  $('.sign-in-menu').on('click', function () { showObjects('.sign-in-section') })
   $('#sign-in').on('submit', onSignIn)
+  $('#sign-in').on('reset', onClearFormInput('#sign-in'), onClearErrorAlertBox)
   $('#sign-out').on('submit', onSignOut)
 }
 
