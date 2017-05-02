@@ -56,7 +56,16 @@ const onClearChores = (event) => {
   ui.clearChores()
 }
 
+const showChoreOptions = function () {
+  $('.chore-get-menu').show()
+  $('.chore-get-one-menu').show()
+  $('.chore-update-menu').show()
+  $('.chore-delete-menu').show()
+  $('.change-password-menu').hide()
+}
+
 const addHandlers = () => {
+  $('.chore-menu').on('click', showChoreOptions)
   $('#add-chore').on('submit', onCreateChore)
   $('#get-chores').on('click', onGetChores)
   $('#get-one-chore').on('submit', onGetOneChore)

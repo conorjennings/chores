@@ -4,39 +4,70 @@ const store = require('../store')
 
 const signUpSuccess = (data) => {
   store.user = data.user
-  console.log('sign up success')
+
+  // This closes the form after a successful sign up:
+  $('#sign-up').trigger('reset') // http://stackoverflow.com/questions/16452699/how-to-reset-a-form-using-jquery-with-reset-method
+  $('.sign-up-menu').hide()
 }
 
 const signUpFailure = (error) => {
-  $('#signUpErrorAlertMessage').html("Passwords don't match or email already taken")
-  $('.alert-danger').show()
   console.error(error)
+  $('.sign-up-error-info').html('User already exists. Try a different email address')
+  $('.sign-up-error-info').show()
+  // This clears out the bootstrap alert box after a few seconds:
+  // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+  setTimeout(function () {
+    $('.sign-up-error-info').alert('close')
+  }, 3000)
 }
 
 // important to use tokens (change each time you sign in) over using IDs
-// see screen shot on desktop showing the token
 const signInSuccess = (data) => {
-  // just save whatever you goet back during a sign in in this store object that will hold the token.
+  $('#sign-in').trigger('reset')
+  // just save whatever you got back during a sign in in this store object that will hold the token.
   store.user = data.user
-  console.log('Token info: ', store.user.token)
+  $('#sign-in').trigger('reset')
+  // console.log('Token info: ', store.user.token)
   $('.sign-up-menu').hide()
-  $('.chore-menu').show()
+  $('.sign-in-menu').hide()
+  $('.sign-out-menu').show()
   $('.change-password-menu').show()
+  $('.chore-menu').show()
+
+  $('#sign-up-section').hide()
+  $('.sign-in-section').hide()
 }
 
 const signInFailure = (error) => {
-  console.log('sign in failure')
-  $('#sign-in-error-message').html('Incorrect Email or Password.')
-  $('.alert-danger').show()
   console.error('sign in failure. Error is: ', error)
+  $('.sign-in-error-alert').html('Incorrect Email or Password.')
+  $('.sign-in-error-alert').show()
+  // This clears out the bootstrap alert box after a few seconds:
+  // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+  setTimeout(function () {
+    $('.sign-in-error-alert').alert('close')
+  }, 3000)
 }
 
 const signOutSuccess = () => {
-  console.log('>>>>>>>>>>>>> sign out success')
   store.user = null // this gets rid of data stored in cache
   $('.sign-up-menu').show()
-  $('.chore-menu').hide()
+  $('.sign-in-menu').show()
   $('.change-password-menu').hide()
+  $('.sign-out-menu').hide()
+
+  $('.chore-menu').hide()
+  $('.chore-get-menu').hide()
+  $('.chore-get-one-menu').hide()
+  $('.chore-update-menu').hide()
+  $('.chore-delete-menu').hide()
+
+  $('.change-password-section').hide()
+  $('.sign-in-section').hide()
+  $('.sign-up-section').hide()
+  $('#sign-in').trigger('reset')
+  $('#sign-up').trigger('reset')
+  $('#change-password').trigger('reset')
 }
 
 const signOutFailure = (error) => {
@@ -44,7 +75,7 @@ const signOutFailure = (error) => {
 }
 
 const changePasswordSuccess = () => {
-  $('#change-password-success-message').html('Password changed')
+  $('#change-password-success-message').html('Password successfully changed')
   $('.alert-success').show()
 }
 

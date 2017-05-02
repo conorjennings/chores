@@ -23,6 +23,10 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
           <nav>
             <ul class="nav nav-tabs">
               <li class="chore-menu"><a href="#">Chores</a></li>
+              <li class="chore-get-menu"><a href="#">Get Chores</a></li>
+              <li class="chore-get-one-menu"><a href="#">Get One Chore</a></li>
+              <li class="chore-update-menu"><a href="#">Update a Chore</a></li>
+              <li class="chore-delete-menu"><a href="#">Delete a Chore</a></li>
               <li class="sign-up-menu"><a href="#">Sign Up</a></li>
               <li class="sign-in-menu"><a href="#">Sign In</a></li>
               <li class="change-password-menu"><a href="#">Change Password</a></li>
@@ -31,57 +35,44 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
           </nav>
       </div>
 
-    <section class="container authentication">
+    <!-- <div class="authentication"> -->
 <!--
       <div class="jumbotron">
           <h1>Chores, Chores, Chores.. </h1>
         </div> -->
 <div class="sign-up-section">
       <form id="sign-up">
-          <legend>Sign up</legend>
+          <!-- <legend>Sign up</legend> -->
           <input type="email" name="credentials[email]" id="sign-up-email" placeholder="email" required>
           <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password" required>
           <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Confirm" required>
           <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Sign Up</button>
           <button type="reset" class="btn btn-secondary">Cancel</button>
-          <div id="sign-up-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
-          <div id="sign-up-success-message" class="alert alert-success" role="alert"></div>
+          <div class="alert alert-danger sign-up-error-alert" role="alert"> </div>
+          <div class="alert alert-info sign-up-error-info" role="alert"> </div>
+          <div class="alert alert-success sign-up-success-alert" role="alert"> </div>
+
       </form>
 </div>
-      <P>
-      <BR/>
-      </P>
+
       <div class="sign-in-section">
       <form id="sign-in">
         <fieldset>
-          <legend>Sign in</legend>
-          <input type="email" name="credentials[email]" id="sign-in-email" placeholder="email"  required>
-          <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password" required>
+          <!-- <legend>Sign in</legend> -->
+          <input type="email" name="credentials[email]" id="sign-in-email" placeholder="email" value="cj@gmail.com" required>
+          <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password" value="a" required>
           <button type="submit" class="btn btn-primary">Sign In</button>
           <button type="reset" class="btn btn-secondary">Cancel</button>
-          <div id="sign-in-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
-          <div id="sign-in-success-message" class="alert alert-success" role="alert"></div>
+          <div class="alert alert-danger sign-in-error-alert" role="alert"> </div>
+          <div class="alert alert-success sign-in-success-alert" role="alert"> </div>
         </fieldset>
       </form>
     </div>
 
-
-      <!-- <form id="sign-out">
-        <fieldset>
-          <legend>Sign Out</legend>
-          <button type="submit" class="btn btn-primary">Sign Out</button>
-        </fieldset>
-      </form> -->
-
-    </section>
-    <P>
-    <BR/>
-    </P>
     <div class="change-password-section">
-      <section class="container account-change">
         <form id="change-password">
           <fieldset>
-            <legend>Change password</legend>
+            <!-- <legend>Change password</legend> -->
             <input type="password" name="passwords[old]" id="old-password" placeholder="Current Password" required>
             <input type="password" name="passwords[new]" id="new-password" placeholder="New Password" required>
             <input type="password" name="passwords[confirm]" id="new-password-confirm" placeholder="Confirm Password" required>
@@ -91,21 +82,15 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
         </form>
       <div id="change-password-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
       <div id="change-password-success-message" class="alert alert-success" role="alert"></div>
-      </section>
     </div>
-<P>
-<BR/>
-<BR/>
-</P>
+
 
 <div class="chores-section">
 <!-- <section id="get-chores-section"> -->
 <button id="get-chores" class="btn btn-primary">Get Chores</button>
 <!-- <button id="clear-chores" class="btn btn-default">Clear Chores</button> -->
 <!-- </section> -->
-<P>
-<BR/>
-</P>
+
 <!-- <section class="my-chore-options"> -->
   <!-- This is the form to add or insert a new chore into the chores table. Not sure how the FK of user gets input here?? -->
   <form id="add-chore">
@@ -131,10 +116,6 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
 </form>
 <!-- </section> -->
 
-<P>
-<BR/>
-<BR/>
-</P>
 
 <form id="update-chore">
   <fieldset>
@@ -162,8 +143,7 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
   </fieldset>
 </form>
 
-<P>
-<BR/>
+
 <!-- Drop down menu to return selected items -->
 <!-- <div class="btn-group">
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -224,11 +204,7 @@ http://bootsnipp.com/snippets/9naj
       </form> -->
 
 </div>
-<BR/>
 
-
-
-</P>
 <form id="get-one-chore">
   <fieldset>
     <legend>Select One Chore</legend>
@@ -239,22 +215,15 @@ http://bootsnipp.com/snippets/9naj
 </form>
 
 
-<P>
-<BR/>
-<BR/>
-</P>
  <div class="list-group" id ="one-chore-content">
 </div>
 
 
-<P>
-<BR/>
-<BR/>
-</P>
+
 <div class="list-group" id ="chore-content"></div>
 
 </div> <!-- End of chores section DIV -->
 
-
+</div>
 </body>
 </html>

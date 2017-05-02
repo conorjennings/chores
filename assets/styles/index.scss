@@ -21,17 +21,19 @@ html {
 
 
 
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: unset;
-}
+//
+// .hide {
+//   display: none;
+// }
+//
+// .show {
+//   display: unset;
+// }
 
 .alert {
-  //display:none;
+   line-height:20px;
+   padding:20px 15px;
+  width: 44%;
 }
 
 
