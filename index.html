@@ -24,7 +24,7 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
             <ul class="nav nav-tabs">
               <li class="chore-menu"><a href="#">To Do List </a></li>
               <li class="chore-add-menu"><a href="#">Add an Item</a></li>
-              <li class="chore-get-menu"><a href="#">Get Items</a></li>
+              <li class="chore-get-menu"><a href="#">Get List</a></li>
               <li class="chore-get-one-menu"><a href="#">Get Item</a></li>
               <li class="chore-update-menu"><a href="#">Update Item</a></li>
               <li class="chore-delete-menu"><a href="#">Delete Item</a></li>
@@ -43,7 +43,7 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
           <input type="email" name="credentials[email]" id="sign-up-email" placeholder="email" required>
           <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password" required>
           <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Confirm" required>
-          <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Sign Up</button>
+          <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Sign Up</button>
           <button type="reset" class="btn btn-secondary">Cancel</button>
           <div class="alert alert-danger sign-up-error-alert" role="alert"> </div>
           <div class="alert alert-info sign-up-error-info" role="alert"> </div>
@@ -55,9 +55,9 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
       <form id="sign-in">
         <fieldset>
           <!-- <legend>Sign in</legend> -->
-          <input type="email" name="credentials[email]" id="sign-in-email" placeholder="email" value="cj@gmail.com" required>
-          <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password" value="a" required>
-          <button type="submit" class="btn btn-primary">Sign In</button>
+          <input type="email" name="credentials[email]" id="sign-in-email" placeholder="email"  required>
+          <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password" required>
+          <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> Sign In</button>
           <button type="reset" class="btn btn-secondary">Cancel</button>
           <div class="alert alert-danger sign-in-error-alert" role="alert"> </div>
           <div class="alert alert-success sign-in-success-alert" role="alert"> </div>
@@ -93,7 +93,8 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
       <option name="chore[priority]" value="2">Somewhat Urgent</option>
       <option name="chore[priority]" value="3">Not Urgent</option>
       </select>
-      <input type="submit" class="btn btn-primary" name="submit" value="Add an Item">
+      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Add an Item</button>
+      <!-- <input type="submit" class="btn btn-primary" name="submit" value="Add an Item"> -->
       <button type="reset" class="btn btn-secondary">Cancel</button>
       <!-- <div id="add-chore-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
       <div id="add-chore-success-message" class="alert alert-success" role="alert"></div> -->
@@ -107,10 +108,15 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
     <input type="text" name="chore[id]" placeholder="id" required>
     <input type="text" name="chore[task]" placeholder="description" required>
     <input type="date" name="chore[due_on]" placeholder="date" required>
-    <input type="radio" name="chore[priority]" value="1"> Urgent
-    <input type="radio" name="chore[priority]" value="2">  Somewhat Urgent
-    <input type="radio" name="chore[priority]" value="3">  Not Urgent
-    <input type="submit" class="btn btn-primary" name="submit" value="Update an item">
+    <select name="chore[priority]" required>
+    <option disabled selected value> Priority Level </option>
+    <option name="chore[priority]" value="1">Urgent</option>
+    <option name="chore[priority]" value="2">Somewhat Urgent</option>
+    <option name="chore[priority]" value="3">Not Urgent</option>
+    </select>
+
+    <!-- <input type="submit" class="btn btn-primary" name="submit" value="Update an item"> -->
+    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Update Item</button>
       <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
 </form>
@@ -121,7 +127,9 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
   <fieldset>
     <!-- <legend>delete chore</legend> -->
     <input type="text" name="chore[id]" placeholder="id" required>
-    <input type="submit" class="btn btn-primary" name="submit" value="Delete item">
+    <!-- <input type="submit" class="btn btn-primary" name="submit" value="Delete item"> -->
+    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span> Delete Item</button>
+
       <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
 </form>
@@ -129,6 +137,7 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
 
 <!-- <div class="filter-chores-section">
 <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Filter Chores <span class="caret"></span>
     </button>
@@ -154,7 +163,8 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
   <fieldset>
     <!-- <legend>Select One Chore</legend> -->
     <input type="text" name="chore[id]" placeholder="id" required>
-    <input type="submit" class="btn btn-primary" name="submit" value="Get item">
+    <!-- <input type="submit" class="btn btn-primary" name="submit" value="Get item"> -->
+    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span> Get Item</button>
       <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
 </form>

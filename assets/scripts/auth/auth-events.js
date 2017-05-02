@@ -65,38 +65,42 @@ const onChangePassword = function (event) {
 }
 
 // Hide any error bootstrap alert box if user hits cancel.
-const onClearErrorAlertBox = function () {
-  // event.preventDefault()  This cost me 2 annoying hours. Wouldn't allow me clear form as well as hide error message. Turned off. then worked!
-  // $('.alert').hide()
-  $('.alert-danger').hide()
-}
+// const onClearErrorAlertBox = function () {
+//   // event.preventDefault()  This cost me 2 annoying hours. Wouldn't allow me clear form as well as hide error message. Turned off. then worked!
+//   // $('.alert').hide()
+//   $('.alert-danger').hide()
+// }
 
 // Hide any error bootstrap alert box if user hits cancel.
-const onClearSuccessAlertBox = function () {
-  // event.preventDefault()  This cost me 2 annoying hours. Wouldn't allow me clear form as well as hide error message. Turned off. then worked!
-  // $('.alert').hide()
-  $('.alert-success').hide()
-}
+// const onClearSuccessAlertBox = function () {
+//   // event.preventDefault()  This cost me 2 annoying hours. Wouldn't allow me clear form as well as hide error message. Turned off. then worked!
+//   // $('.alert').hide()
+//   $('.alert-success').hide()
+// }
 
 // Genereic function to clear out input form fields when necessary
-const onClearFormInput = function (formName) {
-  $(formName)[0].reset()
-}
+// const onClearFormInput = function (formName) {
+//   $(formName)[0].reset()
+// }
 
 const onShowSignIn = function () {
   $('.sign-in-section').show()
+  $('.sign-up-menu').hide() // Prevent user for opening sign up when sign in is open
 }
 
 const onHideSignIn = function () {
   $('.sign-in-section').hide()
+  //$('.sign-up-menu').show()
 }
 
 const onShowSignUp = function () {
   $('.sign-up-section').show()
+  $('.sign-in-menu').hide() // Prevent user for opening sign in when sign up is open
 }
 
 const onHideSignUp = function () {
   $('.sign-up-section').hide()
+  $('.sign-in-menu').show()  // Allow user for opening sign in when sign up is cancelled
 }
 
 const onShowChangePassword = function () {
@@ -111,17 +115,12 @@ const addHandlers = () => {
   $('.change-password-menu').on('click', onShowChangePassword)
   $('#change-password').on('submit', onChangePassword)
   $('#change-password').on('reset', onHideChangePassword)
-  // $('#change-password').on('reset', onClearFormInput('#change-password'), function () { hideObjects('.change-password-section') })
-
   $('.sign-up-menu').on('click', onShowSignUp)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-up').on('reset', onHideSignUp)
-
   $('.sign-in-menu').on('click', onShowSignIn)
   $('#sign-in').on('submit', onSignIn)
   $('#sign-in').on('reset', onHideSignIn)
-  // $('#sign-in').on('reset', onClearFormInput('#sign-in'), function () { hideObjects('.sign-up-section') }, function () { hideObjects('.sign-in-section') })
-
   $('.sign-out-menu').on('click', onSignOut)
 }
 

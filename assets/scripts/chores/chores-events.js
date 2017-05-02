@@ -10,12 +10,20 @@ const onCreateChore = function (event) {
   api.createChore(data)
   .then(function (data) {
     ui.createChoreSuccess(data)
+    onGetChoresApi()
   })
   .catch(ui.createChoreFailure)
 }
 
 const onGetChores = (event) => {
   event.preventDefault()
+    // api.getChores()
+    // .then(ui.getChoresSuccess)
+    // .catch(ui.failure)
+  onGetChoresApi()
+}
+
+const onGetChoresApi = () => {
   api.getChores()
     .then(ui.getChoresSuccess)
     .catch(ui.failure)
@@ -37,6 +45,7 @@ const onUpdateChore = function (event) {
   api.updateChore(data)
   .then(function (data) {
     ui.updateChoreSuccess(data)
+    onGetChoresApi()
   })
   .catch(ui.updateChoreFailure)
 }
@@ -47,14 +56,10 @@ const onDeleteChore = function (event) {
   api.deleteChore(data)
   .then(function (data) {
     ui.deleteChoreSuccess(data)
+    onGetChoresApi()
   })
   .catch(ui.deleteChoreFailure)
 }
-
-// const onClearChores = (event) => {
-//   event.preventDefault()
-//   ui.clearChores()
-// }
 
 const showChoreOptions = function () {
   clearAllChores
@@ -69,6 +74,10 @@ const showChoreOptions = function () {
 
 const onShowAddChore = function () {
   $('.add-chore-section').show()
+  $('#chore-content').empty()
+  $('.delete-chore-section').hide()
+  $('.update-chore-section').hide()
+  $('.get-one-chore-section').hide()
 }
 
 const onHideAddChore = function () {
@@ -77,6 +86,10 @@ const onHideAddChore = function () {
 
 const onShowUpdateChore = function () {
   $('.update-chore-section').show()
+  $('#one-chore-section').hide()
+  $('.add-chore-section').hide()
+  $('.delete-chore-section').hide()
+  $('.get-one-chore-section').hide()
 }
 
 const onHideUpdateChore = function () {
@@ -85,6 +98,10 @@ const onHideUpdateChore = function () {
 
 const onShowDeleteChore = function () {
   $('.delete-chore-section').show()
+  $('#one-chore-section').hide()
+  $('.add-chore-section').hide()
+  $('.update-chore-section').hide()
+  $('.get-one-chore-section').hide()
 }
 
 const onHideDeleteChore = function () {
@@ -93,10 +110,15 @@ const onHideDeleteChore = function () {
 
 const onShowGetOneChore = function () {
   $('.get-one-chore-section').show()
+  $('#one-chore-content').empty()
+  $('.delete-chore-section').hide()
+  $('.update-chore-section').hide()
+  $('.add-chore-section').hide()
 }
 
 const onHideGetOneChore = function () {
   $('.get-one-chore-section').hide()
+  $('#one-chore-content').empty()
 }
 
 const clearAllChores = function () {

@@ -4,12 +4,14 @@
 const showChoresTemplate = require('../templates/chore-listing.handlebars')
 
 const createChoreSuccess = (data) => {
-  console.log('>>>>>Add Chore Success: ', data)
+  console.log('createChoreSuccess: ', data)
+  $('.add-chore-section').hide()
+  $('#add-chore').trigger('reset') // clear out text box entry
   // store.user = data.user  // Closed to my issue log https://github.com/ga-wdi-boston/full-stack-project/issues/772
 }
 
 const createChoreFailure = (error) => {
-  console.log('Add Chore Failed: ', error)
+  console.log('createChoreFailure: ', error)
   // $('#insertChoreFailureAlertMessage').html('Add Chore Failed')
   console.error(error)
 }
@@ -20,23 +22,27 @@ const getChoresSuccess = (data) => {
 }
 
 const getChoresFailure = (error) => {
-  console.log('Get Chores Failed: ', error)
+  console.log('getChoresFailure: ', error)
 }
 
 const updateChoreSuccess = (data) => {
-  console.log('Add Chore Success: ', data)
+  console.log('updateChoreSuccess: ', data)
+  $('.update-chore-section').hide()
+  $('#update-chore').trigger('reset') // clear out text box entry
 }
 
 const updateChoreFailure = (error) => {
-  console.log('Update Chore Failed: ', error)
+  console.log('updateChoreFailure: ', error)
 }
 
 const deleteChoreSuccess = (data) => {
-  console.log('Delete Chore Success: ', data)
+  console.log('deleteChoreSuccess: ', data)
+  $('.delete-chore-section').hide()
+  $('#delete-chore').trigger('reset') // clear out text box entry
 }
 
 const deleteChoreFailure = (error) => {
-  console.log('Delete Chore Failed: ', error)
+  console.log('deleteChoreFailure: ', error)
 }
 
 const clearChores = () => {
@@ -44,21 +50,16 @@ const clearChores = () => {
 }
 
 const getOneChoreSuccess = (data) => {
-  $('#one-chore-content').html('<h1>Chore Details:<br></h1>')
+  $('#one-chore-content').html('<h2>Chore Details:<br></h2>')
   $('#one-chore-content').append('<h3>ID: ' + data.chore.id + '</h3>')
   $('#one-chore-content').append('<h3>Description: ' + data.chore.task + '</h3>')
   $('#one-chore-content').append('<h3>Due Date: ' + data.chore.due_on + '</h3>')
   $('#one-chore-content').append('<h3>Priority Level: ' + data.chore.priority + '</h3>')
-
-  // This code was clearing out screen when i hit 'Get Chores' button twice. Turned it off..
-  // $('button').on('click', function (e) {
-  //   e.preventDefault()
-  //   $(e.target).parent().parent().remove()
-  // })
+  $('#chore-content').empty()
 }
 
 const getOneChoreFailure = (error) => {
-  console.log('Get 1 Chore Failed: ', error)
+  console.log('getOneChoreFailure: ', error)
 }
 
 module.exports = {

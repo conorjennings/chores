@@ -1,7 +1,8 @@
 {{#each chores}}
   <div class='content'>
-    <div class='row'>
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+
+     <div class='container'>
+
         <data-id="{{chore.id}}">
 
         <small>ID: </small>
@@ -10,50 +11,37 @@
         {{else}}
           No ID.
         {{/if}}
-        <BR />
+<br>
           <small>Task: </small>
           {{#if this.task}}
             {{this.task}}
           {{else}}
             No task.
           {{/if}}
-
-          <BR/>
+<br>
           <small>Due Date: </small>
           {{#if this.due_on}}
             {{this.due_on}}
           {{else}}
             No Due Date
           {{/if}}
-
-          <BR/>
+<br>
           <small>Number of Days Remaining: </small>
           {{#if this.days_to_due_date}}
             {{this.days_to_due_date}}
           {{else}}
             0
           {{/if}}
-<!--
-          <BR/>
-          <small>Priority: </small>
-          {{#if this.priority}}
-            {{this.priority}}
-          {{else}}
-            No Priority
-          {{/if}} -->
-
-          <BR/>
+<br>
           <small>Priority: </small>
           {{#if this.priority_alpha}}
             {{this.priority_alpha}}
           {{else}}
             No Priority
           {{/if}}
-          <P>
-            <BR />
-          </P>
-
     </div>
   </div>
 </div>
+<br>
+<hr>
 {{/each}}

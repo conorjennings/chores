@@ -23,18 +23,18 @@ const signUpFailure = (error) => {
 
 // important to use tokens (change each time you sign in) over using IDs
 const signInSuccess = (data) => {
-  $('#sign-in').trigger('reset')
   // just save whatever you got back during a sign in in this store object that will hold the token.
   store.user = data.user
   $('#sign-in').trigger('reset')
   // console.log('Token info: ', store.user.token)
-  $('.sign-up-menu').hide()
+ $('.sign-up-menu').hide()
+  // $('.sign-up-menu').addClass('hide-sign-up-menu')
   $('.sign-in-menu').hide()
   $('.sign-out-menu').show()
   $('.change-password-menu').show()
   $('.chore-menu').show()
 
-  $('#sign-up-section').hide()
+  $('.sign-up-section').hide()
   $('.sign-in-section').hide()
 }
 
@@ -54,21 +54,27 @@ const signOutSuccess = () => {
   $('.sign-up-menu').show()
   $('.sign-in-menu').show()
   $('.change-password-menu').hide()
-  $('.sign-out-menu').hide()
-
+  // $('.sign-out-menu').hide()
   $('.chore-menu').hide()
   $('.chore-get-menu').hide()
   $('.chore-get-one-menu').hide()
   $('.chore-update-menu').hide()
   $('.chore-delete-menu').hide()
   $('.chore-add-menu').hide()
+  $('.chore-clear-menu').hide()
 
   $('.change-password-section').hide()
   $('.sign-in-section').hide()
   $('.sign-up-section').hide()
+  $('.delete-chore-section').hide()
+  $('.update-chore-section').hide()
+  $('.add-chore-section').hide()
+  $('.get-one-chore-section').hide()
   $('#sign-in').trigger('reset')
   $('#sign-up').trigger('reset')
   $('#change-password').trigger('reset')
+  $('#chore-content').empty()
+  $('#one-chore-content').empty()
 }
 
 const signOutFailure = (error) => {

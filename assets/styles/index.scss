@@ -19,9 +19,12 @@ html {
   background-size: cover;
 }
 
-#chore-content {
-    font-size: x-large;
+#one-chore-content h2 {
+text-decoration: underline
 }
+
+
+.hide-sign-up-menu { display: none; }
 
 //
 // .hide {
@@ -71,7 +74,18 @@ html {
 //  }
 
 
+#chore-content {
+  background:rgba(255,255,255, 0.4);
+  font-size: x-large;
+  width: 450px;
+  margin: left;
+}
 
+#one-chore-content {
+  background:rgba(255,255,255, 0.4);
+  width: 450px;
+  margin: left;
+}
 
  .dropdown-submenu {
      position: relative;
