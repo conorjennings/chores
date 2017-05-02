@@ -61,6 +61,7 @@ const signOutSuccess = () => {
   $('.chore-get-one-menu').hide()
   $('.chore-update-menu').hide()
   $('.chore-delete-menu').hide()
+  $('.chore-add-menu').hide()
 
   $('.change-password-section').hide()
   $('.sign-in-section').hide()
@@ -81,6 +82,13 @@ const changePasswordSuccess = () => {
 
 const changePasswordFailure = (error) => {
   console.error('change password failure. Error is: ', error)
+  $('.chg-passw-error-alert').html('Password Failure')
+  $('.chg-passw-error-alert').show()
+  // This clears out the bootstrap alert box after a few seconds:
+  // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+  setTimeout(function () {
+    $('.chg-passw-error-alert').alert('close')
+  }, 3000)
 }
 
 module.exports = {

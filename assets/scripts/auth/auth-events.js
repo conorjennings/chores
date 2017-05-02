@@ -49,8 +49,13 @@ const onChangePassword = function (event) {
   const data = getFormFields(this)
 
   if (origPass !== data.passwords.old || data.passwords.new !== data.passwords.confirm) {
-    $('#change-password-error-message').html('Either your current password is incorrect or your new passwords don\'t match.')
-    $('.alert-danger').show()
+    $('.chg-passw-error-alert').html('Either your current password is incorrect or your new passwords don\'t match.')
+    $('.chg-passw-error-alert').show()
+    // This clears out the bootstrap alert box after a few seconds:
+    // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+    setTimeout(function () {
+      $('.chg-passw-error-alert').alert('close')
+    }, 3000)
   } else {
     api.changePassword(data)
       .then(ui.changePasswordSuccess)
@@ -101,13 +106,6 @@ const onShowChangePassword = function () {
 const onHideChangePassword = function () {
   $('.change-password-section').hide()
 }
-
-// https://codepen.io/CSWApps/pen/XJoLmN
-// window.setTimeout(function () {
-//   $('.alert').fadeTo(500, 0).slideUp(500, function () {
-//     $(this).remove()
-//   })
-// }, 4000)
 
 const addHandlers = () => {
   $('.change-password-menu').on('click', onShowChangePassword)

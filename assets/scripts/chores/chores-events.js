@@ -51,27 +51,78 @@ const onDeleteChore = function (event) {
   .catch(ui.deleteChoreFailure)
 }
 
-const onClearChores = (event) => {
-  event.preventDefault()
-  ui.clearChores()
-}
+// const onClearChores = (event) => {
+//   event.preventDefault()
+//   ui.clearChores()
+// }
 
 const showChoreOptions = function () {
+  clearAllChores
+  $('.chore-add-menu').show()
   $('.chore-get-menu').show()
   $('.chore-get-one-menu').show()
   $('.chore-update-menu').show()
   $('.chore-delete-menu').show()
+  $('.chore-clear-menu').show()
   $('.change-password-menu').hide()
+}
+
+const onShowAddChore = function () {
+  $('.add-chore-section').show()
+}
+
+const onHideAddChore = function () {
+  $('.add-chore-section').hide()
+}
+
+const onShowUpdateChore = function () {
+  $('.update-chore-section').show()
+}
+
+const onHideUpdateChore = function () {
+  $('.update-chore-section').hide()
+}
+
+const onShowDeleteChore = function () {
+  $('.delete-chore-section').show()
+}
+
+const onHideDeleteChore = function () {
+  $('.delete-chore-section').hide()
+}
+
+const onShowGetOneChore = function () {
+  $('.get-one-chore-section').show()
+}
+
+const onHideGetOneChore = function () {
+  $('.get-one-chore-section').hide()
+}
+
+const clearAllChores = function () {
+  $('#chore-content').empty()
 }
 
 const addHandlers = () => {
   $('.chore-menu').on('click', showChoreOptions)
+  $('.chore-clear-menu').on('click', clearAllChores)
+  $('.chore-add-menu').on('click', onShowAddChore)
   $('#add-chore').on('submit', onCreateChore)
-  $('#get-chores').on('click', onGetChores)
-  $('#get-one-chore').on('submit', onGetOneChore)
-  $('#clear-chores').on('click', onClearChores)
+  $('#add-chore').on('reset', onHideAddChore)
+
+  $('.chore-update-menu').on('click', onShowUpdateChore)
   $('#update-chore').on('submit', onUpdateChore)
+  $('#update-chore').on('reset', onHideUpdateChore)
+
+  $('.chore-delete-menu').on('click', onShowDeleteChore)
   $('#delete-chore').on('submit', onDeleteChore)
+  $('#delete-chore').on('reset', onHideDeleteChore)
+
+  $('.chore-get-menu').on('click', onGetChores)
+
+  $('.chore-get-one-menu').on('click', onShowGetOneChore)
+  $('#get-one-chore').on('submit', onGetOneChore)
+  $('#get-one-chore').on('reset', onHideGetOneChore)
 }
 
 module.exports = {

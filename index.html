@@ -22,11 +22,13 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
         <div class="header clearfix">
           <nav>
             <ul class="nav nav-tabs">
-              <li class="chore-menu"><a href="#">Chores</a></li>
-              <li class="chore-get-menu"><a href="#">Get Chores</a></li>
-              <li class="chore-get-one-menu"><a href="#">Get One Chore</a></li>
-              <li class="chore-update-menu"><a href="#">Update a Chore</a></li>
-              <li class="chore-delete-menu"><a href="#">Delete a Chore</a></li>
+              <li class="chore-menu"><a href="#">To Do List </a></li>
+              <li class="chore-add-menu"><a href="#">Add an Item</a></li>
+              <li class="chore-get-menu"><a href="#">Get Items</a></li>
+              <li class="chore-get-one-menu"><a href="#">Get Item</a></li>
+              <li class="chore-update-menu"><a href="#">Update Item</a></li>
+              <li class="chore-delete-menu"><a href="#">Delete Item</a></li>
+              <li class="chore-clear-menu"><a href="#">Clear List</a></li>
               <li class="sign-up-menu"><a href="#">Sign Up</a></li>
               <li class="sign-in-menu"><a href="#">Sign In</a></li>
               <li class="change-password-menu"><a href="#">Change Password</a></li>
@@ -35,11 +37,6 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
           </nav>
       </div>
 
-    <!-- <div class="authentication"> -->
-<!--
-      <div class="jumbotron">
-          <h1>Chores, Chores, Chores.. </h1>
-        </div> -->
 <div class="sign-up-section">
       <form id="sign-up">
           <!-- <legend>Sign up</legend> -->
@@ -51,7 +48,6 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
           <div class="alert alert-danger sign-up-error-alert" role="alert"> </div>
           <div class="alert alert-info sign-up-error-info" role="alert"> </div>
           <div class="alert alert-success sign-up-success-alert" role="alert"> </div>
-
       </form>
 </div>
 
@@ -80,104 +76,58 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
             <button type="reset" class="btn btn-secondary">Cancel</button>
           </fieldset>
         </form>
-      <div id="change-password-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
-      <div id="change-password-success-message" class="alert alert-success" role="alert"></div>
+      <div class="alert alert-danger alert-dismissible chg-passw-error-alert" role="alert"></div>
+      <div class="change-password-success-message alert alert-success" role="alert"></div>
     </div>
 
 
-<div class="chores-section">
-<!-- <section id="get-chores-section"> -->
-<button id="get-chores" class="btn btn-primary">Get Chores</button>
-<!-- <button id="clear-chores" class="btn btn-default">Clear Chores</button> -->
-<!-- </section> -->
+<!-- <button id="get-chores" class="btn btn-primary">Get Chores</button> -->
 
-<!-- <section class="my-chore-options"> -->
-  <!-- This is the form to add or insert a new chore into the chores table. Not sure how the FK of user gets input here?? -->
-  <form id="add-chore">
-      <legend>Add Chore</legend>
-
+<div class="add-chore-section">
+    <form id="add-chore">
       <input type="text" name="chore[task]" id="add-chore-desc" placeholder="description" required>
       <input type="date" name="chore[due_on]" id="add-chore-date" placeholder="date" required>
-      <!-- <input type="radio" name="chore[priority]" value="1"> Urgent
-      <input type="radio" name="chore[priority]" value="2">  Somewhat Urgent
-      <input type="radio" name="chore[priority]" value="3">  Not Urgent -->
       <select name="chore[priority]" required>
       <option disabled selected value> Priority Level </option>
       <option name="chore[priority]" value="1">Urgent</option>
       <option name="chore[priority]" value="2">Somewhat Urgent</option>
       <option name="chore[priority]" value="3">Not Urgent</option>
       </select>
-      <!-- <button type="submit" class="btn btn-primary"> Add Chore</button> -->
-      <input type="submit" class="btn btn-primary" name="submit" value="Add Chore">
+      <input type="submit" class="btn btn-primary" name="submit" value="Add an Item">
       <button type="reset" class="btn btn-secondary">Cancel</button>
-      <div id="add-chore-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
-      <div id="add-chore-success-message" class="alert alert-success" role="alert"></div>
+      <!-- <div id="add-chore-error-message" class="alert alert-danger alert-dismissible" role="alert"></div>
+      <div id="add-chore-success-message" class="alert alert-success" role="alert"></div> -->
+    </form>
+</div>
 
-</form>
-<!-- </section> -->
-
-
+<div class="update-chore-section">
 <form id="update-chore">
   <fieldset>
-    <legend>update chore</legend>
+    <!-- <legend>update chore</legend> -->
     <input type="text" name="chore[id]" placeholder="id" required>
     <input type="text" name="chore[task]" placeholder="description" required>
     <input type="date" name="chore[due_on]" placeholder="date" required>
     <input type="radio" name="chore[priority]" value="1"> Urgent
     <input type="radio" name="chore[priority]" value="2">  Somewhat Urgent
     <input type="radio" name="chore[priority]" value="3">  Not Urgent
-    <input type="submit" class="btn btn-primary" name="submit" value="update chore">
+    <input type="submit" class="btn btn-primary" name="submit" value="Update an item">
       <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
 </form>
-<P>
-<BR/>
-<BR/>
-</P>
+</div>
+
+<div class="delete-chore-section">
 <form id="delete-chore">
   <fieldset>
-    <legend>delete chore</legend>
+    <!-- <legend>delete chore</legend> -->
     <input type="text" name="chore[id]" placeholder="id" required>
-    <input type="submit" class="btn btn-primary" name="submit" value="delete chore">
+    <input type="submit" class="btn btn-primary" name="submit" value="Delete item">
       <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
 </form>
+</div>
 
-
-<!-- Drop down menu to return selected items -->
-<!-- <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Get Specific Chores
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">By Priority</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">By Days Remaining</a>
-  </div>
-</div> -->
-
-
-<!-- Drop down menu to return selected items
-http://bootsnipp.com/snippets/9naj
- -->
-<!-- <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Filter Chores <span class="caret"></span>
-    </button>
-<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-      <li><a href="#">By Days Remaining</a></li>
-      <li class="divider"></li>
-      <li class="dropdown-submenu">
-        <a tabindex="-1" href="#">By Priority</a>
-        <ul class="dropdown-menu">
-          <li><a tabindex="-1" href="#" name="chore[priority]" value="1">Urgent</a></li>
-          <li><a href="#" name="chore[priority]" value="2">Somewhat Urgent</a></li>
-          <li><a href="#" name="chore[priority]" value="3">Not Urgent</a></li>
-        </ul>
-      </li>
-    </ul>
-</div> -->
-
+<!-- <div class="filter-chores-section">
 <div class="dropdown">
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Filter Chores <span class="caret"></span>
@@ -195,35 +145,25 @@ http://bootsnipp.com/snippets/9naj
         </ul>
       </li>
     </ul>
-      <!-- <form id="get-chores-by-priority">
-        <select name="chore[priority]">
-        <option name="chore[priority]" value="1">Urgent</option>
-        <option name="chore[priority]" value="2">Somewhat Urgent</option>
-        <option name="chore[priority]" value="3">Not Urgent</option>
-        </select>
-      </form> -->
-
 </div>
+</div> -->
+
+<div class="get-one-chore-section">
 
 <form id="get-one-chore">
   <fieldset>
-    <legend>Select One Chore</legend>
+    <!-- <legend>Select One Chore</legend> -->
     <input type="text" name="chore[id]" placeholder="id" required>
-    <input type="submit" class="btn btn-primary" name="submit" value="get a chore">
+    <input type="submit" class="btn btn-primary" name="submit" value="Get item">
       <button type="reset" class="btn btn-secondary">Cancel</button>
   </fieldset>
 </form>
 
-
- <div class="list-group" id ="one-chore-content">
+<div class="list-group" id ="one-chore-content"> </div>
 </div>
 
+ <div class="list-group" id ="chore-content"></div>
 
-
-<div class="list-group" id ="chore-content"></div>
-
-</div> <!-- End of chores section DIV -->
-
-</div>
+</div>  <!-- End of container class -->
 </body>
 </html>
