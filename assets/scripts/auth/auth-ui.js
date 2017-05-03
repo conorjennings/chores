@@ -17,18 +17,16 @@ const signUpFailure = (error) => {
   // This clears out the bootstrap alert box after a few seconds:
   // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
   setTimeout(function () {
-    $('.sign-up-error-info').alert('close')
+    $('.sign-up-error-info').alert('close'); $('.sign-up-section').hide(); $('#sign-up').trigger('reset')
   }, 3000)
 }
 
-// important to use tokens (change each time you sign in) over using IDs
+// Important to use tokens (change each time you sign in) over using IDs
 const signInSuccess = (data) => {
   // just save whatever you got back during a sign in in this store object that will hold the token.
   store.user = data.user
   $('#sign-in').trigger('reset')
-  // console.log('Token info: ', store.user.token)
- $('.sign-up-menu').hide()
-  // $('.sign-up-menu').addClass('hide-sign-up-menu')
+  $('.sign-up-menu').hide()
   $('.sign-in-menu').hide()
   $('.sign-out-menu').show()
   $('.change-password-menu').show()
@@ -45,8 +43,8 @@ const signInFailure = (error) => {
   // This clears out the bootstrap alert box after a few seconds:
   // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
   setTimeout(function () {
-    $('.sign-in-error-alert').alert('close')
-  }, 3000)
+    $('.sign-in-error-alert').alert('close'); $('.sign-in-section').hide(); $('#sign-in').trigger('reset')
+  }, 2000)
 }
 
 const signOutSuccess = () => {
@@ -54,7 +52,7 @@ const signOutSuccess = () => {
   $('.sign-up-menu').show()
   $('.sign-in-menu').show()
   $('.change-password-menu').hide()
-  // $('.sign-out-menu').hide()
+  $('.sign-out-menu').hide()
   $('.chore-menu').hide()
   $('.chore-get-menu').hide()
   $('.chore-get-one-menu').hide()
@@ -82,18 +80,23 @@ const signOutFailure = (error) => {
 }
 
 const changePasswordSuccess = () => {
-  $('#change-password-success-message').html('Password successfully changed')
-  $('.alert-success').show()
+  $('.change-password-success-message').html('Password successfully changed')
+  $('.change-password-success-message').show()
+  // This clears out the bootstrap alert box after a few seconds:
+  // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+  setTimeout(function () {
+    $('.change-password-success-message').alert('close'); $('.change-password-section').hide(); $('#change-password').trigger('reset')
+  }, 2000)
 }
 
 const changePasswordFailure = (error) => {
-  console.error('change password failure. Error is: ', error)
-  $('.chg-passw-error-alert').html('Password Failure')
+  console.error('changePasswordFailure. Error: ', error)
+  $('.chg-passw-error-alert').html('Either your current password is incorrect or your new passwords don\'t match.')
   $('.chg-passw-error-alert').show()
   // This clears out the bootstrap alert box after a few seconds:
   // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
   setTimeout(function () {
-    $('.chg-passw-error-alert').alert('close')
+    $('.chg-passw-error-alert').alert('close'); $('.change-password-section').hide(); $('#change-password').trigger('reset')
   }, 3000)
 }
 

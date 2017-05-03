@@ -14,7 +14,7 @@ const onSignUp = function (event) {
     // This clears out the bootstrap alert box after a few seconds:
     // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
     setTimeout(function () {
-      $('.sign-up-error-alert').alert('close')
+      $('.sign-up-error-alert').alert('close'); $('.sign-up-section').hide(); $('#sign-up').trigger('reset')
     }, 3000)
   } else {
     api.signUp(data)
@@ -48,13 +48,13 @@ const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
 
-  if (origPass !== data.passwords.old || data.passwords.new !== data.passwords.confirm) {
+  if (data.passwords.new !== data.passwords.confirm || origPass !== data.passwords.old) {
     $('.chg-passw-error-alert').html('Either your current password is incorrect or your new passwords don\'t match.')
     $('.chg-passw-error-alert').show()
     // This clears out the bootstrap alert box after a few seconds:
     // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
     setTimeout(function () {
-      $('.chg-passw-error-alert').alert('close')
+      $('.chg-passw-error-alert').alert('close'); $('.change-password-section').hide(); $('#change-password').trigger('reset')
     }, 3000)
   } else {
     api.changePassword(data)
@@ -64,25 +64,6 @@ const onChangePassword = function (event) {
   }
 }
 
-// Hide any error bootstrap alert box if user hits cancel.
-// const onClearErrorAlertBox = function () {
-//   // event.preventDefault()  This cost me 2 annoying hours. Wouldn't allow me clear form as well as hide error message. Turned off. then worked!
-//   // $('.alert').hide()
-//   $('.alert-danger').hide()
-// }
-
-// Hide any error bootstrap alert box if user hits cancel.
-// const onClearSuccessAlertBox = function () {
-//   // event.preventDefault()  This cost me 2 annoying hours. Wouldn't allow me clear form as well as hide error message. Turned off. then worked!
-//   // $('.alert').hide()
-//   $('.alert-success').hide()
-// }
-
-// Genereic function to clear out input form fields when necessary
-// const onClearFormInput = function (formName) {
-//   $(formName)[0].reset()
-// }
-
 const onShowSignIn = function () {
   $('.sign-in-section').show()
   $('.sign-up-menu').hide() // Prevent user for opening sign up when sign in is open
@@ -90,7 +71,7 @@ const onShowSignIn = function () {
 
 const onHideSignIn = function () {
   $('.sign-in-section').hide()
-  //$('.sign-up-menu').show()
+  // $('.sign-up-menu').show()
 }
 
 const onShowSignUp = function () {

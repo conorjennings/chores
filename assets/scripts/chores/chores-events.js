@@ -70,6 +70,8 @@ const showChoreOptions = function () {
   $('.chore-delete-menu').show()
   $('.chore-clear-menu').show()
   $('.change-password-menu').hide()
+  $('.change-password-section').hide()
+  $('.chore-menu').hide()
 }
 
 const onShowAddChore = function () {
