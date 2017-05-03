@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://kids-chores-nh.herokuapp.com/'
+    production: 'https://kids-chores-nh.herokuapp.com'
   }
 }
 
