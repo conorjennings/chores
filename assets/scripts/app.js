@@ -2,7 +2,7 @@
 
 const app = {
   // host: 'http://localhost:4741'
-  host: 'https://kids-chores-nh.herokuapp.com'
+  host: 'https://dry-hollows-40181.herokuapp.com'
 }
 
 module.exports = app
