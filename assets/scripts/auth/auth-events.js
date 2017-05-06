@@ -32,7 +32,7 @@ const onSignIn = function (event) {
   api.signIn(data)
   .then(function (data) {
     ui.signInSuccess(data)
-    $('#sign-in')[0].reset() // clear out form after successfully signing in
+    // $('#sign-in')[0].reset() // This fixed issue log 799
   })
   .catch(ui.signInFailure)
 }
@@ -92,6 +92,11 @@ const onHideChangePassword = function () {
   $('.change-password-section').hide()
 }
 
+const onShowSignUpMenu = function () {
+  $('.sign-up-menu').show()
+  $('.sign-in-section').hide()
+}
+
 const addHandlers = () => {
   $('.change-password-menu').on('click', onShowChangePassword)
   $('#change-password').on('submit', onChangePassword)
@@ -101,7 +106,7 @@ const addHandlers = () => {
   $('#sign-up').on('reset', onHideSignUp)
   $('.sign-in-menu').on('click', onShowSignIn)
   $('#sign-in').on('submit', onSignIn)
-  $('#sign-in').on('reset', onHideSignIn)
+  $('#sign-in').on('reset', onHideSignIn, onShowSignUpMenu)
   $('.sign-out-menu').on('click', onSignOut)
 }
 

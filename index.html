@@ -29,7 +29,7 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
               <li class="chore-update-menu"><a href="#">Update Item</a></li>
               <li class="chore-delete-menu"><a href="#">Delete Item</a></li>
               <li class="chore-clear-menu"><a href="#">Clear List</a></li>
-              <li class="sign-up-menu"><a href="#">Sign Up</a></li>
+              <li id="sign-up-menu-id" class="sign-up-menu"><a href="#">Sign Up</a></li>
               <li class="sign-in-menu"><a href="#">Sign In</a></li>
               <li class="change-password-menu"><a href="#">Change Password</a></li>
               <li class="sign-out-menu"><a href="#">Sign Out</a></li>
@@ -170,6 +170,8 @@ Any click events or handlers from forms on this page are found in 'addHandlers' 
     <!-- <input type="submit" class="btn btn-primary" name="submit" value="Get item"> -->
     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-zoom-in"></span> Get Item</button>
       <button type="reset" class="btn btn-secondary">Cancel</button>
+      <div class="alert alert-danger get-one-chore-error-alert" role="alert"> </div>
+      <div class="alert alert-success get-one-chore-success-alert" role="alert"> </div>
   </fieldset>
 </form>
 

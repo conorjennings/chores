@@ -80,6 +80,13 @@ const getOneChoreSuccess = (data) => {
 
 const getOneChoreFailure = (error) => {
   console.log('getOneChoreFailure: ', error)
+  $('.get-one-chore-error-alert').html('Invalid ID')
+  $('.get-one-chore-error-alert').show()
+  // This clears out the bootstrap alert box after a few seconds:
+  // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+  setTimeout(function () {
+    $('.get-one-chore-section').hide(); $('.get-one-chore-error-alert').hide(); $('#get-one-chore').trigger('reset')
+  }, 1000)
 }
 
 module.exports = {

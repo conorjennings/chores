@@ -30,8 +30,9 @@ const signUpFailure = (error) => {
 const signInSuccess = (data) => {
   // just save whatever you got back during a sign in in this store object that will hold the token.
   store.user = data.user
-  $('#sign-in').trigger('reset')
+
   $('.sign-up-menu').hide()
+  // $('#sign-in').trigger('reset') // This fixed issue log 799
   $('.sign-in-menu').hide()
   $('.sign-out-menu').show()
   $('.change-password-menu').show()
