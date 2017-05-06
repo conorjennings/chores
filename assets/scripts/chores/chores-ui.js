@@ -4,9 +4,14 @@
 const showChoresTemplate = require('../templates/chore-listing.handlebars')
 
 const createChoreSuccess = (data) => {
-  console.log('createChoreSuccess: ', data)
   $('.add-chore-section').hide()
   $('#add-chore').trigger('reset') // clear out text box entry
+  $('.chore-add-menu').show()
+  $('.chore-get-menu').show()
+  $('.chore-get-one-menu').show()
+  $('.chore-update-menu').show()
+  $('.chore-delete-menu').show()
+  $('.chore-clear-menu').show()
   // store.user = data.user  // Closed to my issue log https://github.com/ga-wdi-boston/full-stack-project/issues/772
 }
 
@@ -33,6 +38,13 @@ const updateChoreSuccess = (data) => {
 
 const updateChoreFailure = (error) => {
   console.log('updateChoreFailure: ', error)
+  $('.update-chore-error-alert').html('Invalid ID')
+  $('.update-chore-error-alert').show()
+  // This clears out the bootstrap alert box after a few seconds:
+  // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+  setTimeout(function () {
+    $('.update-chore-error-alert').hide(); $('.update-chore-section').hide(); $('#update-chore').trigger('reset')
+  }, 1000)
 }
 
 const deleteChoreSuccess = (data) => {
@@ -43,6 +55,14 @@ const deleteChoreSuccess = (data) => {
 
 const deleteChoreFailure = (error) => {
   console.log('deleteChoreFailure: ', error)
+  $('.delete-chore-error-alert').html('Invalid ID')
+  $('.delete-chore-error-alert').show()
+
+  // This clears out the bootstrap alert box after a few seconds:
+  // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+  setTimeout(function () {
+    $('.delete-chore-section').hide(); $('.delete-chore-error-alert').hide(); $('#delete-chore').trigger('reset')
+  }, 1000)
 }
 
 const clearChores = () => {

@@ -3,6 +3,7 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./chores-api')
 const ui = require('./chores-ui')
+const authUi = require('../auth/auth-ui')
 
 const onCreateChore = function (event) {
   event.preventDefault()
@@ -62,16 +63,29 @@ const onDeleteChore = function (event) {
 }
 
 const showChoreOptions = function () {
-  clearAllChores
-  $('.chore-add-menu').show()
-  $('.chore-get-menu').show()
-  $('.chore-get-one-menu').show()
-  $('.chore-update-menu').show()
-  $('.chore-delete-menu').show()
-  $('.chore-clear-menu').show()
-  $('.change-password-menu').hide()
-  $('.change-password-section').hide()
-  $('.chore-menu').hide()
+  if (authUi.getNewUserFlag()) {
+    $('.chore-add-menu').show()
+    $('.chore-get-menu').hide()
+    $('.chore-get-one-menu').hide()
+    $('.chore-update-menu').hide()
+    $('.chore-delete-menu').hide()
+    $('.chore-clear-menu').hide()
+    $('.change-password-menu').hide()
+    $('.change-password-section').hide()
+    $('.chore-menu').hide()
+  }
+  if (!authUi.getNewUserFlag()) {
+    clearAllChores
+    $('.chore-add-menu').show()
+    $('.chore-get-menu').show()
+    $('.chore-get-one-menu').show()
+    $('.chore-update-menu').show()
+    $('.chore-delete-menu').show()
+    $('.chore-clear-menu').show()
+    $('.change-password-menu').hide()
+    $('.change-password-section').hide()
+    $('.chore-menu').hide()
+  }
 }
 
 const onShowAddChore = function () {

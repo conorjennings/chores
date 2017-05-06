@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+let newUserFlag = false
 
 const signUpSuccess = (data) => {
   store.user = data.user
@@ -8,8 +9,12 @@ const signUpSuccess = (data) => {
   // This closes the form after a successful sign up:
   $('#sign-up').trigger('reset') // http://stackoverflow.com/questions/16452699/how-to-reset-a-form-using-jquery-with-reset-method
   $('.sign-up-menu').hide()
+  newUserFlag = 'true'
 }
 
+const getNewUserFlag = function () {
+  return newUserFlag
+}
 const signUpFailure = (error) => {
   console.error(error)
   $('.sign-up-error-info').html('User already exists. Try a different email address')
@@ -73,6 +78,7 @@ const signOutSuccess = () => {
   $('#change-password').trigger('reset')
   $('#chore-content').empty()
   $('#one-chore-content').empty()
+  newUserFlag = false
 }
 
 const signOutFailure = (error) => {
@@ -108,6 +114,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  getNewUserFlag
 
 }
