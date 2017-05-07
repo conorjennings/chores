@@ -9,8 +9,20 @@ user could also update, delete existing items as well as see  all items in their
 ## Wireframe:
 http://imgur.com/8IiVqyz
 
-## Deployed URL:
+
+## Github and Heroku Repos:
+FRONTEND REPO:
 https://github.com/conorjennings/chores
+
+FRONTEND DEPLOYED
+https://conorjennings.github.io/chores/
+
+Gihub BACKEND REPO:
+https://github.com/conorjennings/chores-api
+
+Heroku BACKEND DEPLOYED:
+https://dry-hollows-40181.herokuapp.com/
+
 
 ## List of Technologies Used
 HTML,
