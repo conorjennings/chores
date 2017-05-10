@@ -2,7 +2,7 @@
 
 const config = require('../config')
 const store = require('../store')
-const app = require('../app.js')
+// const app = require('../app.js')
 
 const createChore = (data) => {
   return $.ajax({
@@ -17,7 +17,7 @@ const createChore = (data) => {
 
 const getChores = function () {
   return $.ajax({
-    url: app.host + '/chores',
+    url: config.apiOrigin + '/chores',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
