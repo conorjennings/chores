@@ -94,6 +94,10 @@ const onShowAddChore = function () {
   $('.delete-chore-section').hide()
   $('.update-chore-section').hide()
   $('.get-one-chore-section').hide()
+
+  $('#delete-chore').trigger('reset')
+  $('#get-one-chore').trigger('reset')
+  $('#update-chore').trigger('reset')
 }
 
 const onHideAddChore = function () {
@@ -106,6 +110,10 @@ const onShowUpdateChore = function () {
   $('.add-chore-section').hide()
   $('.delete-chore-section').hide()
   $('.get-one-chore-section').hide()
+
+  $('#delete-chore').trigger('reset')
+  $('#add-chore').trigger('reset')
+  $('#get-one-chore').trigger('reset')
 }
 
 const onHideUpdateChore = function () {
@@ -118,6 +126,10 @@ const onShowDeleteChore = function () {
   $('.add-chore-section').hide()
   $('.update-chore-section').hide()
   $('.get-one-chore-section').hide()
+
+  $('#get-one-chore').trigger('reset')
+  $('#add-chore').trigger('reset')
+  $('#update-chore').trigger('reset')
 }
 
 const onHideDeleteChore = function () {
@@ -130,6 +142,10 @@ const onShowGetOneChore = function () {
   $('.delete-chore-section').hide()
   $('.update-chore-section').hide()
   $('.add-chore-section').hide()
+
+  $('#delete-chore').trigger('reset')
+  $('#add-chore').trigger('reset')
+  $('#update-chore').trigger('reset')
 }
 
 const onHideGetOneChore = function () {
