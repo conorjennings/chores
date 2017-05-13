@@ -8,12 +8,26 @@ const authUi = require('../auth/auth-ui')
 const onCreateChore = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  api.createChore(data)
-  .then(function (data) {
-    ui.createChoreSuccess(data)
-    onGetChoresApi()
-  })
-  .catch(ui.createChoreFailure)
+  const todayDate = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
+  // This converts the string version of date to an actual date version for comparison
+  // to ensure a user cannot enter a task BEFORE today's date.
+  const choreEnteredDate = new Date(data.chore.due_on).toJSON().slice(0, 10).replace(/-/g, '/')
+  if (choreEnteredDate < todayDate) { // Can't create a chore before TODAY
+    $('.add-chore-error-alert').html('Invalid Due Date')
+    $('.add-chore-error-alert').show()
+    // This clears out the bootstrap alert box after a few seconds:
+    // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+    setTimeout(function () {
+      $('.add-chore-error-alert').hide(); $('.add-chore-section').hide(); $('#add-chore').trigger('reset')
+    }, 2000)
+  } else {
+    api.createChore(data)
+    .then(function (data) {
+      ui.createChoreSuccess(data)
+      onGetChoresApi()
+    })
+    .catch(ui.createChoreFailure)
+  }
 }
 
 const onGetChores = (event) => {
@@ -43,12 +57,26 @@ const onGetOneChore = function (event) {
 const onUpdateChore = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  api.updateChore(data)
-  .then(function (data) {
-    ui.updateChoreSuccess(data)
-    onGetChoresApi()
-  })
-  .catch(ui.updateChoreFailure)
+  const todayDate = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
+  // This converts the string version of date to an actual date version for comparison
+  // to ensure a user cannot enter a task BEFORE today's date.
+  const choreEnteredDate = new Date(data.chore.due_on).toJSON().slice(0, 10).replace(/-/g, '/')
+  if (choreEnteredDate < todayDate) { // Can't create a chore before TODAY
+    $('.update-chore-error-alert').html('Invalid Due Date')
+    $('.update-chore-error-alert').show()
+    // This clears out the bootstrap alert box after a few seconds:
+    // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+    setTimeout(function () {
+      $('.update-chore-error-alert').hide(); $('.update-chore-section').hide(); $('#update-chore').trigger('reset')
+    }, 2000)
+  } else {
+    api.updateChore(data)
+    .then(function (data) {
+      ui.updateChoreSuccess(data)
+      onGetChoresApi()
+    })
+    .catch(ui.updateChoreFailure)
+  }
 }
 
 const onDeleteChore = function (event) {
@@ -78,7 +106,6 @@ const showChoreOptions = function () {
     clearAllChores
 
     const choresApiResult = onGetChoresApi()
-    console.log('choresApiResult = ', choresApiResult)
     // If a user  deletes ALL their tasks, adjust the menu buttons to remove update and edit and delete
     if (choresApiResult === '') {
       $('.chore-add-menu').show()
