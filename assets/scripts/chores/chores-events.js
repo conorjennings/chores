@@ -76,12 +76,25 @@ const showChoreOptions = function () {
   }
   if (!authUi.getNewUserFlag()) {
     clearAllChores
-    $('.chore-add-menu').show()
-    $('.chore-get-menu').show()
-    $('.chore-get-one-menu').show()
-    $('.chore-update-menu').show()
-    $('.chore-delete-menu').show()
-    $('.chore-clear-menu').show()
+
+    const choresApiResult = onGetChoresApi()
+    console.log('choresApiResult = ', choresApiResult)
+    // If a user  deletes ALL their tasks, adjust the menu buttons to remove update and edit and delete
+    if (choresApiResult === '') {
+      $('.chore-add-menu').show()
+      $('.chore-get-menu').hide()
+      $('.chore-get-one-menu').hide()
+      $('.chore-update-menu').hide()
+      $('.chore-delete-menu').hide()
+      $('.chore-clear-menu').hide()
+    }
+
+    // $('.chore-add-menu').show()
+    // $('.chore-get-menu').show()
+    // $('.chore-get-one-menu').show()
+    // $('.chore-update-menu').show()
+    // $('.chore-delete-menu').show()
+    // $('.chore-clear-menu').show()
     $('.change-password-menu').hide()
     $('.change-password-section').hide()
     $('.chore-menu').hide()

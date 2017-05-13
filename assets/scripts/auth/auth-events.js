@@ -13,9 +13,10 @@ const onSignUp = function (event) {
     $('.sign-up-error-alert').show()
     // This clears out the bootstrap alert box after a few seconds:
     // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+    // NOTE: You must hide in this EXACT order for it to work!
     setTimeout(function () {
-      $('.sign-up-error-alert').alert('close'); $('.sign-up-section').hide(); $('#sign-up').trigger('reset')
-    }, 3000)
+      $('.sign-up-section').hide(); $('.sign-up-error-alert').hide(); $('#sign-up').trigger('reset')
+    }, 2000)
   } else {
     api.signUp(data)
     .then(function (data) {

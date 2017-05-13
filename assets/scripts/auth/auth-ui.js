@@ -16,14 +16,15 @@ const getNewUserFlag = function () {
   return newUserFlag
 }
 const signUpFailure = (error) => {
-  console.error(error)
-  $('.sign-up-error-info').html('User already exists. Try a different email address')
-  $('.sign-up-error-info').show()
+  console.error('signUpFailure', error)
+  $('.sign-up-error-alert').html('User already exists. Try a different email address')
+  $('.sign-up-error-alert').show()
   // This clears out the bootstrap alert box after a few seconds:
   // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+  // NOTE: You must hide in this EXACT order for it to work!
   setTimeout(function () {
-    $('.sign-up-error-info').alert('close'); $('.sign-up-section').hide(); $('#sign-up').trigger('reset')
-  }, 3000)
+    $('.sign-up-section').hide(); $('.sign-up-error-alert').hide(); $('#sign-up').trigger('reset')
+  }, 2000)
 }
 
 // Important to use tokens (change each time you sign in) over using IDs
@@ -43,14 +44,15 @@ const signInSuccess = (data) => {
 }
 
 const signInFailure = (error) => {
-  console.error('sign in failure. Error is: ', error)
+  console.error('signInFailure. Error: ', error)
   $('.sign-in-error-alert').html('Incorrect Email or Password.')
   $('.sign-in-error-alert').show()
   // This clears out the bootstrap alert box after a few seconds:
   // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
+  // NOTE: You must hide in this EXACT order for it to work!
   setTimeout(function () {
-    $('.sign-in-error-alert').alert('close'); $('.sign-in-section').hide(); $('#sign-in').trigger('reset')
-  }, 2000)
+    $('.sign-in-section').hide(); $('.sign-in-error-alert').hide(); $('#sign-in').trigger('reset')
+  }, 1000)
 }
 
 const signOutSuccess = () => {

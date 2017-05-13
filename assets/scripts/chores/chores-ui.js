@@ -23,6 +23,27 @@ const createChoreFailure = (error) => {
 
 const getChoresSuccess = (data) => {
   const showChoresHtml = showChoresTemplate({ chores: data.chores })
+  console.log('showChoresHtml = ', showChoresHtml)
+  // If a user  deletes ALL their tasks, adjust the menu buttons to remove update and edit and delete
+  if (showChoresHtml === '') {
+    $('.chore-add-menu').show()
+    $('.chore-get-menu').hide()
+    $('.chore-get-one-menu').hide()
+    $('.chore-update-menu').hide()
+    $('.chore-delete-menu').hide()
+    $('.chore-clear-menu').hide()
+  }
+
+  // If a user  has at least 1 task, adjust the menu buttons to show update and edit and delete
+  if (showChoresHtml !== '') {
+    $('.chore-add-menu').show()
+    $('.chore-get-menu').show()
+    $('.chore-get-one-menu').show()
+    $('.chore-update-menu').show()
+    $('.chore-delete-menu').show()
+    $('.chore-clear-menu').show()
+  }
+
   $('#chore-content').html(showChoresHtml)
 }
 
@@ -48,7 +69,6 @@ const updateChoreFailure = (error) => {
 }
 
 const deleteChoreSuccess = (data) => {
-  console.log('deleteChoreSuccess: ', data)
   $('.delete-chore-section').hide()
   $('#delete-chore').trigger('reset') // clear out text box entry
 }
