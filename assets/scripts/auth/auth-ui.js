@@ -46,7 +46,7 @@ const signInSuccess = (data) => {
 
 const signInFailure = (error) => {
   console.error('signInFailure. Error: ', error)
-  $('.sign-in-error-alert').html('Incorrect Email or Password.')
+  $('.sign-in-error-alert').html('Incorrect Email or Password or User Does Not Exist.')
   $('.sign-in-error-alert').show()
   // This clears out the bootstrap alert box after a few seconds:
   // Source: http://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close
