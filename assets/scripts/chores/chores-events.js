@@ -197,7 +197,30 @@ const clearAllChores = function () {
   $('#chore-content').empty()
 }
 
+const showHomeMenu = (data) => {
+  $('#chore-content').empty()
+  $('.sign-up-menu').hide()
+  $('.sign-in-menu').hide()
+  $('.sign-out-menu').show()
+  $('.change-password-menu').show()
+  $('.chore-menu').show()
+  $('.sign-up-section').hide()
+  $('.sign-in-section').hide()
+  $('.chore-get-menu').hide()
+  $('.chore-get-one-menu').hide()
+  $('.chore-add-menu').hide()
+  $('.chore-update-menu').hide()
+  $('.chore-delete-menu').hide()
+  $('.chore-clear-menu').hide()
+  $('.chore-get-section').hide()
+  $('.get-one-chore-section').hide()
+  $('.add-chore-section').hide()
+  $('.update-chore-section').hide()
+  $('.delete-chore-section').hide()
+}
+
 const addHandlers = () => {
+  $('.home-menu').on('click', showHomeMenu)
   $('.chore-menu').on('click', showChoreOptions)
   $('.chore-clear-menu').on('click', clearAllChores)
   $('.chore-add-menu').on('click', onShowAddChore)

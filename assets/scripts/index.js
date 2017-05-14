@@ -29,6 +29,7 @@ $(() => {
   $('.delete-chore-section').hide()
   $('.get-chores-section').hide()
   $('.get-one-chore-section').hide()
+  $('.home-menu').hide()
 })
 
 // use require with a reference to bundle the file and use it in this file

@@ -41,6 +41,7 @@ const signInSuccess = (data) => {
 
   $('.sign-up-section').hide()
   $('.sign-in-section').hide()
+  $('.home-menu').show()
 }
 
 const signInFailure = (error) => {
@@ -57,6 +58,7 @@ const signInFailure = (error) => {
 
 const signOutSuccess = () => {
   store.user = null // this gets rid of data stored in cache
+  $('.home-menu').hide()
   $('.sign-up-menu').show()
   $('.sign-in-menu').show()
   $('.change-password-menu').hide()
