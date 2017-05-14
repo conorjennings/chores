@@ -53,7 +53,7 @@ const signInFailure = (error) => {
   // NOTE: You must hide in this EXACT order for it to work!
   setTimeout(function () {
     $('.sign-in-section').hide(); $('.sign-in-error-alert').hide(); $('#sign-in').trigger('reset')
-  }, 1000)
+  }, 2000)
 }
 
 const signOutSuccess = () => {
